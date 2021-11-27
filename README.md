@@ -1,4 +1,4 @@
 # Data-Structures-Visualiser
 
 
-Colaborators: fulsepire
+Colaborators: fulsepire, Krr1ss
