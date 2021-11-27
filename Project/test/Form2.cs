@@ -61,7 +61,11 @@ namespace test
             string fileName = "Drva/trenutnoDrvo.txt";
             if (File.Exists(fileName))
             {
-                File.Delete(fileName);
+                try
+                {
+                    File.Delete(fileName);
+                }
+                catch { }
             }
             using (FileStream fs = File.Create(fileName))
             {

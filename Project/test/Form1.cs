@@ -19,29 +19,30 @@ namespace test
         {
             InitializeComponent();
         }
-        //bool levo = true;
+
+
         double zoom = 1;
+        //drvo, a je precnik cvora, b je offset od centralne tacke D, c1 vertikalni offset dece, c2 horizontalni, c3 je offset njegove detece (eksponencionalno se smanjuje), n je broj elemenata trenutne strukture
         double a = 50, b = 150, c1 = 90, c2 = 110, c3;
+        int n = 0;
+
+        //Tacke na osnovu koji se crta, D je centar ekrana oko koga se crta sve, B i C se koristi za pomeranje tacno D pri drag and drop-u misa
         Point B = new Point();
         Point C = new Point();
         Point D = new Point();
-        int isMoving = 0, n=0;
+
+        //is moving, koristi se za pomeranje svega sa drag n drop
+        int isMoving = 0;
         int?[] arr = new int?[4096];
+
+        //Za sta se trenutno koristi program
         bool tree = false;
         bool list = false;
-        bool queue = false;
+        bool red = false;
         bool stack = false;
-        /*
-        void test(Node cvor)
-        {
-            if (cvor == null)
-                return;
 
-            listBox3.Items.Add(cvor.value);
-            test(cvor.left);
-            test(cvor.right);
-        }
-         */
+        //drvo
+
         Node noviCvor(int x)
         {
             Node novi = new Node();
@@ -51,7 +52,8 @@ namespace test
 
             return novi;
         }
-        void Preorder(Node root, Point parent, int a, int c1, double c2)
+        Node koren = new Node();
+        void drawingDrvo(Node root, Point parent, int a, int c1, double c2)
         {
             
             Point W = new Point();
@@ -85,7 +87,7 @@ namespace test
 
                 W.X = parent.X - Convert.ToInt32(c2);
                 W.Y = parent.Y + c1;
-                Preorder(root.left, W, a, c1, c2 / 2);
+                drawingDrvo(root.left, W, a, c1, c2 / 2);
             }
             if (root.right != null && root.right.value != null && root != null && root.value != null)
             {
@@ -110,31 +112,11 @@ namespace test
                 
                 W.X = parent.X + Convert.ToInt32(c2);
                 W.Y = parent.Y + c1;
-                Preorder(root.right, W, a, c1, c2 / 2);
+                drawingDrvo(root.right, W, a, c1, c2 / 2);
             }
             return;
         }
-/*        void levelOrder(Node cvor)
-        {
-            if (cvor == null)
-                return;
-   
-            Queue<Node> q;
-            q.push(cvor);
-
-            while (!q.empty())
-            {
-                Cvor* temp = q.front();
-                q.pop();
-                printf("%d ", temp->vrednost);
-                if (temp->levo != NULL)
-                    q.push(temp->levo);
-                if (temp->desno != NULL)
-                    q.push(temp->desno);
-            }
-        }
- */
-        Node insertLevelOrder(int?[] arr, Node root, int i, int n)
+        Node generisiDrvoIzNiza(int?[] arr, Node root, int i, int n)
         {
             if (i < n)
             {
@@ -142,14 +124,12 @@ namespace test
                 temp.value = arr[i];
                 root = temp;
 
-                    root.left = insertLevelOrder(arr, root.left, 2 * i + 1, n);
-                    root.right = insertLevelOrder(arr, root.right, 2 * i + 2, n);
+                    root.left = generisiDrvoIzNiza(arr, root.left, 2 * i + 1, n);
+                    root.right = generisiDrvoIzNiza(arr, root.right, 2 * i + 2, n);
                     return root;
 
             }
             return root;
-
-            
         }
         void ucitajDrvoIzBaseFaila()
         {
@@ -171,7 +151,16 @@ namespace test
             }
             n = i;
         }
-
+        
+        List<int?> Lista = new List<int?>();
+        void drawingLista()
+        {
+            //TO DO
+        }
+        void generisiListuIzNiza(int?[] arr, int n)
+        {
+            //TO DO
+        }
         void ucitajListuIzBaseFaila()
         {
             StreamReader f = new StreamReader("Liste/trenutnaLista.txt");
@@ -191,7 +180,8 @@ namespace test
                 i++;
             }
         }
-        Node koren = new Node();
+        
+        
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             if (tree == true)
@@ -203,7 +193,7 @@ namespace test
                 c2 = 12 * zoom;
 
 
-                koren = insertLevelOrder(arr, koren, 0, n);
+                koren = generisiDrvoIzNiza(arr, koren, 0, n);
                 koren.value = arr[0];
 
                 Graphics g = e.Graphics;
@@ -233,7 +223,7 @@ namespace test
                     c3 = Convert.ToInt32(Math.Pow(2, h - 1)) * c2;
 
                     //crtanje ostatka dece
-                    Preorder(koren, parent, Convert.ToInt32(a), Convert.ToInt32(c1), Convert.ToInt32(c3));
+                    drawingDrvo(koren, parent, Convert.ToInt32(a), Convert.ToInt32(c1), Convert.ToInt32(c3));
                 }
                 return;
             }
@@ -241,7 +231,7 @@ namespace test
             {
                  a = 50 * zoom;
                  b = 200 * zoom;
-                 List<>
+                 //List<>
             }
         }
 
@@ -260,42 +250,50 @@ namespace test
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.BackgroundImage = Properties.Resources.gas;
             D.X = ClientRectangle.Width / 2 - 125;
             D.Y = ClientRectangle.Height / 2;
 
-            timer1.Interval = 17;
-            timer1.Start();
+            this.BackgroundImage = App.Properties.Resources.gas;
 
-
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
             Point A = new Point(0, 0);
+            //gornji tool bar
             listBox1.Location = A;
             listBox1.Size = new Size(ClientRectangle.Width, 30);
+
             button1.Location = A;
-            button1.Size = new Size(100, 30);
-            button1.Text = "Kreiraj novo drvo";
+
             A.X += 100;
             button4.Location = A;
-            button4.Size = new Size(100, 30);
-            button4.Text = "Kreiraj novu listu";
+
+            //desni tool bar
             A.X = ClientRectangle.Width - 250;
-            listBox2.Location = A;
             listBox2.Size = new Size(250, ClientRectangle.Height);
+            listBox2.Location = A;
+
+            //zoom
             A.Y += 1;
             button2.Location = A;
             A.X += 30;
             button3.Location = A;
             A.X += 30;
             textBox1.Location = A;
+            
+            button1.Size = new Size(100, 30);
+            button1.Text = "Kreiraj novo drvo";
+            button4.Size = new Size(100, 30);
+            button4.Text = "Kreuraj novu listu";
+            
             textBox1.Size = new Size(190, 60);
             textBox1.Enabled = false;
             textBox1.Text = Convert.ToString(zoom);
 
+            timer1.Interval = 17;
+            timer1.Start();
+        }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //pomeranje
             if (isMoving > 0)
             {
                 //B = Old_C;
@@ -326,15 +324,40 @@ namespace test
                 B = C;
             }
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void Form1_Resize(object sender, EventArgs e)
         {
-            
-                zoom += 0.1;
-                Refresh();
-            
+            Point A = new Point(0, 0);
+            //gornji tool bar
+            listBox1.Location = A;
+            listBox1.Size = new Size(ClientRectangle.Width, 30);
+
+            button1.Location = A;
+
+            A.X += 100;
+            button4.Location = A;
+
+            //desni tool bar
+            A.X = ClientRectangle.Width - 250;
+            listBox2.Size = new Size(250, ClientRectangle.Height+10);
+            listBox2.Location = A;
+
+            //zoom
+            A.Y += 1;
+            button2.Location = A;
+            A.X += 30;
+            button3.Location = A;
+            A.X += 30;
+            textBox1.Location = A;
         }
 
+        //Zoom +
+        private void button2_Click(object sender, EventArgs e)
+        {
+                zoom += 0.1;
+                Refresh();
+        }
+
+        //Zoom -
         private void button3_Click(object sender, EventArgs e)
         {
             if (zoom < 0.1)
@@ -347,6 +370,7 @@ namespace test
 
         }
 
+        //Novo Drvo
         private void button1_Click(object sender, EventArgs e)
         {
             Form2 f2 = new Form2();
@@ -355,8 +379,10 @@ namespace test
             {
             }
             ucitajDrvoIzBaseFaila();
+            tree = true;
         }
 
+        //Nova Lista
         private void button4_Click(object sender, EventArgs e)
         {
             Form3 f3 = new Form3();
@@ -364,8 +390,14 @@ namespace test
             while (Application.OpenForms.Count > 1)
             {
             }
-            //ucitajDrvoIzBaseFaila();
+            ucitajListuIzBaseFaila();
         }
+
+
+
+        
+
+        
     }
     class Node
     {
@@ -374,4 +406,4 @@ namespace test
         public Node right;
     }
 }
-    
+   
