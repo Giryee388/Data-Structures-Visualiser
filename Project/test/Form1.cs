@@ -133,51 +133,61 @@ namespace test
         }
         void ucitajDrvoIzBaseFaila()
         {
-            StreamReader f = new StreamReader("Drva/trenutnoDrvo.txt");
-            int i = 0;
-            string temp;
-            while (!f.EndOfStream)
+            try
             {
-                temp = f.ReadLine();
-                if (temp.Equals(""))
+                StreamReader f = new StreamReader("Drva/trenutnoDrvo.txt");
+                int i = 0;
+                string temp;
+                while (!f.EndOfStream)
                 {
-                    arr[i] = null;
+                    temp = f.ReadLine();
+                    if (temp.Equals(""))
+                    {
+                        arr[i] = null;
+                    }
+                    else
+                    {
+                        arr[i] = Convert.ToInt32(temp);
+                    }
+                    i++;
                 }
-                else
-                {
-                    arr[i] = Convert.ToInt32(temp);
-                }
-                i++;
+                n = i;
             }
-            n = i;
+            catch
+            {
+            }
         }
         
+        //lista
         List<int?> Lista = new List<int?>();
         void drawingLista()
         {
             //TO DO
         }
-        void generisiListuIzNiza(int?[] arr, int n)
-        {
-            //TO DO
-        }
         void ucitajListuIzBaseFaila()
         {
-            StreamReader f = new StreamReader("Liste/trenutnaLista.txt");
-            int i = 0;
-            string temp;
-            while (!f.EndOfStream)
+            try
             {
-                temp = f.ReadLine();
-                if (temp.Equals(""))
+                
+                StreamReader f = new StreamReader("Liste/trenutnaLista.txt");
+                int i = 0;
+                string temp;
+                while (!f.EndOfStream)
                 {
-                    arr[i] = null;
+                    temp = f.ReadLine();
+                    if (temp.Equals(""))
+                    {
+                        arr[i] = null;
+                    }
+                    else
+                    {
+                        arr[i] = Convert.ToInt32(temp);
+                    }
+                    i++;
                 }
-                else
-                {
-                    arr[i] = Convert.ToInt32(temp);
-                }
-                i++;
+            }
+            catch
+            {
             }
         }
         
@@ -354,6 +364,7 @@ namespace test
         private void button2_Click(object sender, EventArgs e)
         {
                 zoom += 0.1;
+                textBox1.Text = Convert.ToString(zoom);
                 Refresh();
         }
 
@@ -365,9 +376,9 @@ namespace test
             if (zoom != 0.1)
             {
                 zoom -= 0.1;
+                textBox1.Text = Convert.ToString(zoom);
                 Refresh();
             }   
-
         }
 
         //Novo Drvo
@@ -380,6 +391,9 @@ namespace test
             }
             ucitajDrvoIzBaseFaila();
             tree = true;
+            list = false;
+            red = false;
+            stack = false;
         }
 
         //Nova Lista
@@ -391,13 +405,11 @@ namespace test
             {
             }
             ucitajListuIzBaseFaila();
-        }
-
-
-
-        
-
-        
+            tree = true;
+            list = false;
+            red = false;
+            stack = false;
+        }   
     }
     class Node
     {
