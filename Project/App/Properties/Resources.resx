@@ -118,13 +118,4 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="gas" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gas.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="squared_paper_texture_notebook_page_cage_159025_44" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\squared-paper-texture-notebook-page-cage_159025-44.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="square_geometric_grid_pattern_millimetric_plotter_paper_207803705" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\square-geometric-grid-pattern-millimetric-plotter-paper-207803705.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

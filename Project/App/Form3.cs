@@ -21,6 +21,10 @@ namespace test
         {
             timer1.Interval = 200;
             timer1.Start();
+            if (File.Exists("Liste/trenutnaLista.txt"))
+            {
+                File.Delete("Liste/trenutnaLista.txt");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -62,15 +66,8 @@ namespace test
         {
             Directory.CreateDirectory("Liste");
             string fileName = "Liste/trenutnaLista.txt";
-            if (File.Exists(fileName))
-            {
-                File.Delete(fileName);
-            }
-            using (FileStream fs = File.Create(fileName))
-            {
-
-            }
-            StreamWriter f = new StreamWriter("Liste/trenutnaLista.txt");
+            FileStream fs = File.Create(fileName);
+            StreamWriter f = new StreamWriter(fs);
             int n = Convert.ToInt32(listBox1.Items.Count.ToString());
             object[] arr = new object[n];
             listBox1.Items.CopyTo(arr, 0);
@@ -79,7 +76,7 @@ namespace test
                 f.WriteLine(arr[i]);
                 //label3.Text = Convert.ToString(arr[i]);
             }
-            f.Close();
+            f.Dispose();
             this.Close();
         }
     }

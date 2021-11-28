@@ -59,35 +59,5 @@ namespace App.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap gas {
-            get {
-                object obj = ResourceManager.GetObject("gas", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap square_geometric_grid_pattern_millimetric_plotter_paper_207803705 {
-            get {
-                object obj = ResourceManager.GetObject("square_geometric_grid_pattern_millimetric_plotter_paper_207803705", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap squared_paper_texture_notebook_page_cage_159025_44 {
-            get {
-                object obj = ResourceManager.GetObject("squared_paper_texture_notebook_page_cage_159025_44", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

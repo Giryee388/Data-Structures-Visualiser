@@ -23,6 +23,10 @@ namespace test
             timer1.Interval = 200;
             timer1.Start();
             textBox2.Text = "0";
+            if (File.Exists("Drva/trenutnoDrvo.txt"))
+            {
+                File.Delete("Drva/trenutnoDrvo.txt");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -59,28 +63,17 @@ namespace test
         {
             Directory.CreateDirectory("Drva");
             string fileName = "Drva/trenutnoDrvo.txt";
-            if (File.Exists(fileName))
-            {
-                try
-                {
-                    File.Delete(fileName);
-                }
-                catch { }
-            }
-            using (FileStream fs = File.Create(fileName))
-            {
-                
-            }
-            StreamWriter f = new StreamWriter("Drva/trenutnoDrvo.txt");
+            FileStream fs = File.Create(fileName);
+            StreamWriter f = new StreamWriter(fs);
             int n = Convert.ToInt32(listBox1.Items.Count.ToString());
             object[] arr = new object[n];
             listBox1.Items.CopyTo(arr, 0);
-            for(int i=0; i<n; i++)
+            for (int i = 0; i < n; i++)
             {
                 f.WriteLine(arr[i]);
                 //label3.Text = Convert.ToString(arr[i]);
             }
-            f.Close();
+            f.Dispose();
             this.Close();
         }
 
