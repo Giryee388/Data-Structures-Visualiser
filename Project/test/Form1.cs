@@ -159,10 +159,39 @@ namespace test
         }
         
         //lista
-        List<int?> Lista = new List<int?>();
-        void drawingLista()
+        Element dodajNaPocetak(Element lista, int? x)
         {
-            //TO DO
+            Element novi = new Element();
+            novi.value = x;
+            novi.next = lista;
+            return novi;
+        }
+
+        Element dodajNaKraj(Element lista, int? x)
+        {
+            Element novi = new Element();
+            novi.value = x;
+
+            if (lista == null)
+                return dodajNaPocetak(lista, x);
+
+            Element temp = lista;
+            while (temp.next != null)
+                temp = temp.next;
+
+            temp.next = novi;
+            novi.next = null;
+            return lista;
+        }
+        Element lista = new Element();
+        void drawingLista(Element lista, Point Parent)
+        {
+            Point W = new Point();
+            Graphics g = CreateGraphics();
+            Pen olovka = new Pen(Color.Black, Convert.ToInt32(zoom * 6));
+            Font drawFont = new Font("Arial", Convert.ToInt32(zoom * 16));
+            SolidBrush cetka = new SolidBrush(Color.Black);
+            SolidBrush stringCetka = new SolidBrush(Color.White);
         }
         void ucitajListuIzBaseFaila()
         {
@@ -170,20 +199,18 @@ namespace test
             {
                 
                 StreamReader f = new StreamReader("Liste/trenutnaLista.txt");
-                int i = 0;
                 string temp;
                 while (!f.EndOfStream)
                 {
                     temp = f.ReadLine();
                     if (temp.Equals(""))
                     {
-                        arr[i] = null;
+                        lista=dodajNaKraj(lista,null);
                     }
                     else
                     {
-                        arr[i] = Convert.ToInt32(temp);
+                        lista =dodajNaKraj(lista,Convert.ToInt32(temp));
                     }
-                    i++;
                 }
             }
             catch
@@ -416,6 +443,11 @@ namespace test
         public int? value;
         public Node left;
         public Node right;
+    }
+    class Element
+    {
+        public int? value;
+        public Element next;
     }
 }
    
