@@ -159,6 +159,9 @@ namespace test
             A.X += 100;
             button4.Location = A;
 
+            A.X += 500;
+            button5.Location = A;
+
             //desni tool bar
             A.X = ClientRectangle.Width - 250;
             listBox2.Size = new Size(250, ClientRectangle.Height);
@@ -176,6 +179,8 @@ namespace test
             button1.Text = "Kreiraj novo drvo";
             button4.Size = new Size(100, 30);
             button4.Text = "Kreuraj novu listu";
+            button5.Size = new Size(100, 30);
+            button5.Text = "Simuliraj sortiranje";
             
             textBox1.Size = new Size(190, 60);
             textBox1.Enabled = false;
@@ -265,6 +270,12 @@ namespace test
             catch
             {
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Form4 f4 = new Form4();
+            f4.ShowDialog();
         }   
     }
 }
