@@ -9,16 +9,33 @@ using System.Windows.Forms;
 using System.Threading;
 using System.IO;
 using App;
+using System.Runtime.InteropServices;
 
 namespace test
 {
     public partial class Form1 : Form
     {
+        private bool isCollapsedFile = true;
+        private bool isCollapsedSimulate = true;
+        /*
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,
+            int nTopRect,
+            int nRightRect,
+            int nBottomRect,
+            int nWidthEllipse,
+            int nHeightEllipse
+        );*/
+
         Drvo _drvo;
         Lista _lista;
         public Form1()
         {
             InitializeComponent();
+            //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
         }
         public double zoom = 1;
         public int n = 0;
@@ -141,45 +158,20 @@ namespace test
         #region ResponsiveUI
         private void Form1_Load(object sender, EventArgs e)
         {
+            System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
+            gp.AddEllipse(0, 0, pictureBox1.Width - 3, pictureBox1.Height - 3);
+            Region rg = new Region(gp);
+            pictureBox1.Region = rg;
+
             _lista = new Lista(CreateGraphics(), this);
             _drvo = new Drvo(CreateGraphics(), this);
             D.X = ClientRectangle.Width / 2 - 125;
             D.Y = ClientRectangle.Height / 2;
 
-            //Treba da napravim novu sliku bez stock watermark - Jovan
-            //this.BackgroundImage = App.Properties.Resources.gas;
-
-            Point A = new Point(0, 0);
-            //gornji tool bar
-            listBox1.Location = A;
-            listBox1.Size = new Size(ClientRectangle.Width, 30);
-
-            button1.Location = A;
-
-            A.X += 100;
-            button4.Location = A;
-
-            A.X += 500;
-            button5.Location = A;
-
-            //desni tool bar
-            A.X = ClientRectangle.Width - 250;
-            listBox2.Size = new Size(250, ClientRectangle.Height);
-            listBox2.Location = A;
-
-            //zoom
-            A.Y += 1;
-            button2.Location = A;
-            A.X += 30;
-            button3.Location = A;
-            A.X += 30;
-            textBox1.Location = A;
+            Point A = new Point(0, 60);
             
-            button1.Size = new Size(100, 30);
             button1.Text = "Kreiraj novo drvo";
-            button4.Size = new Size(100, 30);
             button4.Text = "Kreuraj novu listu";
-            button5.Size = new Size(100, 30);
             button5.Text = "Simuliraj sortiranje";
             
             textBox1.Size = new Size(190, 60);
@@ -188,26 +180,6 @@ namespace test
 
             timer1.Interval = 17;
             timer1.Start();
-        }
-        private void Form1_Resize(object sender, EventArgs e)
-        {
-            Point A = new Point(0, 0);
-
-            //gornji tool bar
-            listBox1.Size = new Size(ClientRectangle.Width, 30);
-
-            //desni tool bar
-            A.X = ClientRectangle.Width - 250;
-            listBox2.Size = new Size(250, ClientRectangle.Height+10);
-            listBox2.Location = A;
-
-            //zoom
-            A.Y += 1;
-            button2.Location = A;
-            A.X += 30;
-            button3.Location = A;
-            A.X += 30;
-            textBox1.Location = A;
         }
         #endregion
         #region Zoom
@@ -276,7 +248,77 @@ namespace test
         {
             Form4 f4 = new Form4();
             f4.ShowDialog();
-        }   
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if (isCollapsedFile)
+            {
+                panel19.Enabled = false;
+                panelDropDown.BringToFront();
+
+                panelDropDown.Size = panelDropDown.MaximumSize;
+                isCollapsedFile = false;
+
+                pictureBox3.BringToFront();
+                pictureBox4.BringToFront();
+                pictureBox5.BringToFront();
+            }
+            else
+            {
+                panel19.Enabled = true;
+                panel19.BringToFront();
+
+                panelDropDown.Size = panelDropDown.MinimumSize;
+                isCollapsedFile = true;
+
+                pictureBox3.BringToFront();
+                pictureBox4.BringToFront();
+                pictureBox5.BringToFront();
+            }
+        }
+
+        private void button10_MouseEnter(object sender, EventArgs e)
+        {
+            //button10.BackColor = Color.Yellow;
+        }
+
+        private void button10_MouseLeave(object sender, EventArgs e)
+        {
+            button10.BackColor = Color.Transparent;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (isCollapsedSimulate)
+            {
+                panelDropDown.Enabled = false;
+                panel19.BringToFront();
+
+                panel19.Size = panel19.MaximumSize;
+                isCollapsedSimulate = false;
+
+                pictureBox3.BringToFront();
+                pictureBox4.BringToFront();
+                pictureBox5.BringToFront();
+            }
+            else
+            {
+                panelDropDown.Enabled = true;
+                panel19.BringToFront();
+
+                panel19.Size = panel19.MinimumSize;
+                isCollapsedSimulate = true;
+
+                pictureBox3.BringToFront();
+                pictureBox4.BringToFront();
+                pictureBox5.BringToFront();
+            }
+        }
     }
 }
    

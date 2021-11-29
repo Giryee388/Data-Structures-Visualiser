@@ -166,6 +166,7 @@
             this.Controls.Add(this.cmdSort);
             this.Controls.Add(this.cmdShuffle);
             this.Controls.Add(this.cboAlg1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form4";
             this.Text = "Algoritmi za sortiranje";
             this.Load += new System.EventHandler(this.Form1_Load);

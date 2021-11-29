@@ -110,6 +110,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\TopToolBar.png" />
+    <None Include="Resources\TopToolBar1.png" />
+    <None Include="Resources\logo.png" />
     <Content Include="Resources\Screenshot_9.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
