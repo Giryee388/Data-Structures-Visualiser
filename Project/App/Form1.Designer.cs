@@ -46,7 +46,13 @@
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.panel21 = new System.Windows.Forms.Panel();
+            this.panel22 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
+            this.panel23 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel16 = new System.Windows.Forms.Panel();
@@ -64,9 +70,6 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.panel21 = new System.Windows.Forms.Panel();
-            this.panel22 = new System.Windows.Forms.Panel();
-            this.panel23 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelDropDown.SuspendLayout();
@@ -127,6 +130,7 @@
             this.panelDropDown.Name = "panelDropDown";
             this.panelDropDown.Size = new System.Drawing.Size(100, 25);
             this.panelDropDown.TabIndex = 18;
+            this.panelDropDown.MouseLeave += new System.EventHandler(this.panelDropDown_MouseLeave);
             // 
             // panel13
             // 
@@ -137,6 +141,7 @@
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(100, 69);
             this.panel13.TabIndex = 4;
+            this.panel13.MouseLeave += new System.EventHandler(this.panel13_MouseLeave);
             // 
             // button1
             // 
@@ -236,6 +241,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.panel1.Controls.Add(this.button9);
+            this.panel1.Controls.Add(this.button7);
+            this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.panel21);
             this.panel1.Controls.Add(this.panel22);
             this.panel1.Controls.Add(this.button2);
@@ -252,30 +260,91 @@
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(1159, 0);
+            this.panel1.Location = new System.Drawing.Point(1740, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 576);
+            this.panel1.Size = new System.Drawing.Size(200, 1100);
             this.panel1.TabIndex = 25;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(150, 4);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(33, 22);
+            this.button9.TabIndex = 28;
+            this.button9.Text = "X";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(69, 3);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 27;
+            this.button7.Text = "[][]";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(13, 2);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(50, 23);
+            this.button6.TabIndex = 26;
+            this.button6.Text = "_";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // panel21
+            // 
+            this.panel21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.panel21.Location = new System.Drawing.Point(5, 0);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(2, 5000);
+            this.panel21.TabIndex = 13;
+            // 
+            // panel22
+            // 
+            this.panel22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
+            this.panel22.Location = new System.Drawing.Point(3, 0);
+            this.panel22.Name = "panel22";
+            this.panel22.Size = new System.Drawing.Size(2, 5000);
+            this.panel22.TabIndex = 12;
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button2.Location = new System.Drawing.Point(7, 37);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(47, 47);
             this.button2.TabIndex = 23;
             this.button2.Text = "+";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // panel23
+            // 
+            this.panel23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.panel23.Location = new System.Drawing.Point(1, 0);
+            this.panel23.Name = "panel23";
+            this.panel23.Size = new System.Drawing.Size(2, 5000);
+            this.panel23.TabIndex = 11;
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(54, 37);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(47, 47);
             this.button3.TabIndex = 24;
             this.button3.Text = "-";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // textBox1
             // 
@@ -423,36 +492,12 @@
             this.pictureBox5.TabIndex = 29;
             this.pictureBox5.TabStop = false;
             // 
-            // panel21
-            // 
-            this.panel21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.panel21.Location = new System.Drawing.Point(5, 0);
-            this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(2, 5000);
-            this.panel21.TabIndex = 13;
-            // 
-            // panel22
-            // 
-            this.panel22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
-            this.panel22.Location = new System.Drawing.Point(3, 0);
-            this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(2, 5000);
-            this.panel22.TabIndex = 12;
-            // 
-            // panel23
-            // 
-            this.panel23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.panel23.Location = new System.Drawing.Point(1, 0);
-            this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(2, 5000);
-            this.panel23.TabIndex = 11;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(1359, 576);
+            this.ClientSize = new System.Drawing.Size(1940, 1100);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
@@ -530,6 +575,9 @@
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Panel panel22;
         private System.Windows.Forms.Panel panel23;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button9;
 
 
     }

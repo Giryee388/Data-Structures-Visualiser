@@ -319,6 +319,53 @@ namespace test
                 pictureBox5.BringToFront();
             }
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Maximized;
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void panel13_MouseLeave(object sender, EventArgs e)
+        {
+            if (!isCollapsedFile)
+            {
+                panel19.Enabled = true;
+                panel19.BringToFront();
+
+                panelDropDown.Size = panelDropDown.MinimumSize;
+                isCollapsedFile = true;
+
+                pictureBox3.BringToFront();
+                pictureBox4.BringToFront();
+                pictureBox5.BringToFront();
+            }
+        }
+
+        private void panelDropDown_MouseLeave(object sender, EventArgs e)
+        {
+            if (!isCollapsedFile)
+            {
+                panel19.Enabled = true;
+                panel19.BringToFront();
+
+                panelDropDown.Size = panelDropDown.MinimumSize;
+                isCollapsedFile = true;
+
+                pictureBox3.BringToFront();
+                pictureBox4.BringToFront();
+                pictureBox5.BringToFront();
+            }
+        }
     }
 }
    
