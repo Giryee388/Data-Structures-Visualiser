@@ -15,8 +15,10 @@ namespace test
 {
     public partial class Form1 : Form
     {
+
         private bool isCollapsedFile = true;
         private bool isCollapsedSimulate = true;
+        private bool isMaximized = true;
         /*
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
@@ -35,8 +37,8 @@ namespace test
         public Form1()
         {
             InitializeComponent();
-            //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
         }
+
         public double zoom = 1;
         public int n = 0;
 
@@ -52,6 +54,7 @@ namespace test
 
         //Za sta se trenutno koristi program
         bool tree = false;
+        bool preOreder = false;
         bool list = false;
         bool red = false;
         bool stack = false;
@@ -102,6 +105,7 @@ namespace test
                     //crtanje ostatka dece
                     _drvo.drawingDrvo(koren, parent, Convert.ToInt32(precnik), Convert.ToInt32(yOffsetDece), Convert.ToInt32(xOffsetDece));
                 }
+
                 return;
             }
             if (list == true)
@@ -158,10 +162,7 @@ namespace test
         #region ResponsiveUI
         private void Form1_Load(object sender, EventArgs e)
         {
-            System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
-            gp.AddEllipse(0, 0, pictureBox1.Width - 3, pictureBox1.Height - 3);
-            Region rg = new Region(gp);
-            pictureBox1.Region = rg;
+            WindowState = FormWindowState.Maximized;
 
             _lista = new Lista(CreateGraphics(), this);
             _drvo = new Drvo(CreateGraphics(), this);
@@ -217,6 +218,7 @@ namespace test
                 list = false;
                 red = false;
                 stack = false;
+                Refresh();
             }
             catch
             {
@@ -250,10 +252,6 @@ namespace test
             f4.ShowDialog();
         }
 
-        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
         private void button10_Click(object sender, EventArgs e)
         {
             if (isCollapsedFile)
@@ -280,16 +278,6 @@ namespace test
                 pictureBox4.BringToFront();
                 pictureBox5.BringToFront();
             }
-        }
-
-        private void button10_MouseEnter(object sender, EventArgs e)
-        {
-            //button10.BackColor = Color.Yellow;
-        }
-
-        private void button10_MouseLeave(object sender, EventArgs e)
-        {
-            button10.BackColor = Color.Transparent;
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -327,7 +315,16 @@ namespace test
 
         private void button7_Click(object sender, EventArgs e)
         {
-            WindowState = FormWindowState.Maximized;
+            if (isMaximized == true)
+            {
+                isMaximized = false;
+                WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                isMaximized = true;
+                WindowState = FormWindowState.Maximized;
+            }
         }
 
         private void button9_Click(object sender, EventArgs e)
