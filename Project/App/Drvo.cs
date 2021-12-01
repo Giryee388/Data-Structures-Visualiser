@@ -131,5 +131,84 @@ namespace App
             {
             }
         }
+        public void PreOrder(Node root, Point parent, int a, int c1, double c2)
+        {
+            int sleep = 1000;
+
+            Point W = new Point();
+            Point Y = new Point();
+            Point parentA = parent;
+            Point parentB = new Point(parent.X, parent.Y+a);
+            Point parentC = new Point(parent.X+a, parent.Y+a);
+            Point parentD = new Point(parent.X+a, parent.Y);
+            
+            Pen olovka = new Pen(Color.Green, Convert.ToInt32(form1.zoom * 6));
+            Font drawFont = new Font("Arial", Convert.ToInt32(form1.zoom * 16));
+            SolidBrush cetka = new SolidBrush(Color.Black);
+            SolidBrush stringCetka = new SolidBrush(Color.White);
+
+            System.Threading.Thread.Sleep(sleep);
+            g.DrawLine(olovka, parentA, parentB);
+            if (root.left != null)
+            {
+                W.X = parentB.X - Convert.ToInt32(c2);
+                W.Y = parentB.Y + c1 - a;
+                System.Threading.Thread.Sleep(sleep);
+                g.DrawLine(olovka, parentB, W);
+
+                PreOrder(root.left, W, a, c1, c2 / 2);
+
+                if (root.right != null)
+                {
+                    W.X = parentB.X + a - Convert.ToInt32(c2);
+                    W.Y = parentB.Y + c1 - a;
+
+                    Y.X = parentB.X + a / 2;
+                    Y.Y = parentB.Y;
+
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, W, Y);
+
+                    W.X = parentC.X - a +Convert.ToInt32(c2);
+                    W.Y = parentC.Y + c1 -a;
+
+                    Y.X = parentC.X - a / 2;
+                    Y.Y = parentC.Y;
+
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, W, Y);
+                    PreOrder(root.right, W, a, c1, c2 / 2);
+
+                    W.X = parentD.X + Convert.ToInt32(c2);
+                    W.Y = parentD.Y + c1;
+
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, W, parentC);
+
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, parentD, parentC);
+                }
+                else
+                {
+                    W.X = parentB.X - Convert.ToInt32(c2) + a;
+                    W.Y = parentB.Y + c1;
+
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, W, parentC);
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, parentC, parentD);
+                    return;
+                }
+            }
+            else
+            {
+                System.Threading.Thread.Sleep(sleep);
+                g.DrawLine(olovka, parentB, parentC);
+                System.Threading.Thread.Sleep(sleep);
+                g.DrawLine(olovka, parentC, parentD);
+                return;
+
+            }
+        }
     }
 }
