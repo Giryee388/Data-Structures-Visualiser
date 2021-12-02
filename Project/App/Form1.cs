@@ -377,6 +377,26 @@ namespace test
             double xOffsetDece = Convert.ToInt32(Math.Pow(2, h - 1)) * xOffsetDeceBase;
             _drvo.PreOrder(koren, parent, Convert.ToInt32(precnik), Convert.ToInt32(yOffsetDece), Convert.ToInt32(xOffsetDece));
         }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            Form6 f6 = new Form6();
+            f6.ShowDialog();
+            while (Application.OpenForms.Count > 1)
+            {
+            }
+            try
+            {
+                //_lista.ucitajListuIzBaseFaila();
+                tree = false;
+                list = false;
+                red = false;
+                stack = true;
+            }
+            catch
+            {
+            }
+        }
     }
 }
 
