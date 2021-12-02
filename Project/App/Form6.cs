@@ -75,7 +75,6 @@ namespace App
         {
             timer1.Interval = 200;
             timer1.Start();
-            textBox2.Text = "0";
             if (File.Exists("Stekovi/TrenutniStek.txt"))
             {
                 File.Delete("Stekovi/TrenutniStek.txt");
