@@ -55,10 +55,10 @@ namespace test
         public int?[] arr = new int?[4096];
 
         //Za sta se trenutno koristi program
-        bool tree = false;
-        bool list = false;
-        bool red = false;
-        bool stack = false;
+        public bool tree = false;
+        public bool list = false;
+        public bool red = false;
+        public bool stack = false;
 
         Element lista = new Element();
         Node koren = new Node();
@@ -68,18 +68,7 @@ namespace test
 
             if (tree == true)
             {
-                button13.Visible = true;
-                button11.Visible = true;
-                button14.Visible = true;
-                trackBar1.Visible = true;
-                trackBar2.Visible = true;
-                trackBar3.Visible = true;
-                label1.Visible = true;
-                label2.Visible = true;
-                label3.Visible = true;
-                checkBox1.Visible = true;
-                checkBox2.Visible = true;
-                checkBox3.Visible = true;
+                panel27.Visible = true;
 
 
                 double precnik = 50 * zoom;
@@ -124,18 +113,7 @@ namespace test
             }
             else
             {
-                button13.Visible = false;
-                button11.Visible = false;
-                button14.Visible = false;
-                trackBar1.Visible = false;
-                trackBar2.Visible = false;
-                trackBar3.Visible = false;
-                label1.Visible = false;
-                label2.Visible = false;
-                label3.Visible = false;
-                checkBox1.Visible = false;
-                checkBox2.Visible = false;
-                checkBox3.Visible = false;
+                panel27.Visible = false;
             }
             if (list == true)
             {
@@ -241,18 +219,14 @@ namespace test
             while (Application.OpenForms.Count > 1)
             {
             }
-            try
-            {
+            //try
+            //{
                 _drvo.ucitajDrvoIzBaseFaila();
-                tree = true;
-                list = false;
-                red = false;
-                stack = false;
                 Refresh();
-            }
-            catch
-            {
-            }
+           // }
+            //catch
+            //{
+            //}
         }
 
         //Nova Lista
@@ -469,11 +443,6 @@ namespace test
             }
         }
 
-        private void button11_Click(object sender, EventArgs e)
-        {
-            preOrderAnalizaKeepGoing = true;
-        }
-
         private void button11_Click_1(object sender, EventArgs e)
         {
             Refresh();
@@ -580,6 +549,81 @@ namespace test
                 //SAFTAM TI MUDA 
             }
         }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            Refresh();
+            int sleep = 500;
+            if (trackBar4.Value == 2)
+            {
+                sleep = 750;
+            }
+
+
+            if (trackBar4.Value == 1)
+            {
+                sleep = 1000;
+            }
+
+
+            if (trackBar4.Value == 0)
+            {
+                sleep = 1250;
+            }
+
+
+            if (trackBar4.Value == 4)
+            {
+                sleep = 300;
+            }
+
+
+            if (trackBar4.Value == 5)
+            {
+                sleep = 150;
+            }
+
+            double precnik = 50 * zoom;
+            double offsetOdD = 150 * zoom;
+            double yOffsetDece = 90 * zoom;
+            double xOffsetDeceBase = 20 * zoom;
+
+            Point parent = new Point(D.X - Convert.ToInt32(precnik) / 2, D.Y - Convert.ToInt32(offsetOdD) - Convert.ToInt32(precnik) / 2);
+
+            double h = Math.Ceiling(Math.Log(n + 1) / Math.Log(2));
+            double xOffsetDece = Convert.ToInt32(Math.Pow(2, h - 1)) * xOffsetDeceBase;
+            if (!checkBox1.Checked)
+                _drvo.brojListova(koren, parent, Convert.ToInt32(precnik), Convert.ToInt32(yOffsetDece), Convert.ToInt32(xOffsetDece), sleep, Convert.ToInt32(75 * zoom));
+            else
+            {
+                //SAFTAM TI MUDA 
+            }
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            Form10 f10 = new Form10();
+            f10.ShowDialog();
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            Form7 f7 = new Form7();
+            f7.ShowDialog();
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            Form9 f9 = new Form9();
+            f9.ShowDialog();
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            Form11 f11 = new Form11();
+            f11.ShowDialog();
+        }
+
     }
 }
 

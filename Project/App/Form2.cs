@@ -17,6 +17,11 @@ namespace test
         {
             InitializeComponent();
         }
+        Form form1;
+        public Form2( Form1 form)
+        {
+            form1 = form;
+        }
         int br = 0,br2 = 0;
         private void Form2_Load(object sender, EventArgs e)
         {
@@ -31,17 +36,35 @@ namespace test
 
         private void button1_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(textBox1.Text);
-            textBox1.Text = "";
-            br++;
+            int n;
+            bool isNumeric = int.TryParse(textBox1.Text, out n);
+            if (isNumeric)
+            {
+                listBox1.Items.Add(textBox1.Text);
+                textBox1.Text = "";
+                br++;
+            }
+            else
+            {
+                MessageBox.Show("Input must be type int","Error");
+            }
         }
         private void textBox1_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyValue == 13)
             {
-                listBox1.Items.Add(textBox1.Text);
-                textBox1.Text = "";
-                br++;
+                int n;
+                bool isNumeric = int.TryParse(textBox1.Text, out n);
+                if (isNumeric)
+                {
+                    listBox1.Items.Add(textBox1.Text);
+                    textBox1.Text = "";
+                    br++;
+                }
+                else
+                {
+                    MessageBox.Show("Input must be type int", "Error");
+                }
             }
         }
 
@@ -61,6 +84,7 @@ namespace test
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Form1 f1 = new Form1();
             Directory.CreateDirectory("Drva");
             string fileName = "Drva/trenutnoDrvo.txt";
             FileStream fs = File.Create(fileName);
@@ -72,6 +96,13 @@ namespace test
             {
                 f.WriteLine(arr[i]);
                 //label3.Text = Convert.ToString(arr[i]);
+            }
+            if (n != 0)
+            {
+                f1.tree = true;
+                f1.stack = false;
+                f1.red = false;
+                f1.stack = false;
             }
             f.Dispose();
             this.Close();

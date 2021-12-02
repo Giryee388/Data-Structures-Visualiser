@@ -669,5 +669,41 @@ namespace App
                 return;
             }
         }
+        List<Point> Lines = new List<Point>();
+        public void brojListova(Node root, Point parent, int a, int c1, double c2, int sleep, int b)
+        {
+
+            Point parentA = new Point(parent.X + (a - b) / 2, parent.Y + (a - b) / 2);
+
+            Pen olovka = new Pen(Color.Yellow, Convert.ToInt32(form1.zoom * 6));
+            Font drawFont = new Font("Arial", Convert.ToInt32(form1.zoom * 16));
+            SolidBrush cetka = new SolidBrush(Color.Red);
+            SolidBrush stringCetka = new SolidBrush(Color.White);
+
+            
+            g.DrawEllipse(olovka, parentA.X, parentA.Y, b, b);
+            System.Threading.Thread.Sleep(sleep);
+            Lines.Add(parentA);
+            SystemSounds.Hand.Play();
+
+            if (root.left == null && root.right == null)
+            {
+                olovka.Color = Color.Green;
+                g.DrawEllipse(olovka, parentA.X, parentA.Y, b, b);
+                olovka.Color = Color.Yellow;
+            }
+
+            if (root.left != null)
+            {
+                parent.X -= Convert.ToInt32(c2);
+                parent.Y += c1;
+                brojListova(root.left, parent, a, c1, c2/2, sleep, b);
+            }
+            if (root.right != null)
+            {
+                parent.X += 2*   Convert.ToInt32(c2);
+                brojListova(root.right, parent, a, c1, c2/2, sleep, b);
+            }
+        }
     }
 }
