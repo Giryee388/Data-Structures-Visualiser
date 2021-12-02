@@ -68,6 +68,20 @@ namespace test
 
             if (tree == true)
             {
+                button13.Visible = true;
+                button11.Visible = true;
+                button14.Visible = true;
+                trackBar1.Visible = true;
+                trackBar2.Visible = true;
+                trackBar3.Visible = true;
+                label1.Visible = true;
+                label2.Visible = true;
+                label3.Visible = true;
+                checkBox1.Visible = true;
+                checkBox2.Visible = true;
+                checkBox3.Visible = true;
+
+
                 double precnik = 50 * zoom;
                 double offsetOdD = 150 * zoom;
                 double yOffsetDece = 90 * zoom;
@@ -107,6 +121,21 @@ namespace test
                     _drvo.drawingDrvo(koren, parent, Convert.ToInt32(precnik), Convert.ToInt32(yOffsetDece), Convert.ToInt32(xOffsetDece));
                 }
                 return;
+            }
+            else
+            {
+                button13.Visible = false;
+                button11.Visible = false;
+                button14.Visible = false;
+                trackBar1.Visible = false;
+                trackBar2.Visible = false;
+                trackBar3.Visible = false;
+                label1.Visible = false;
+                label2.Visible = false;
+                label3.Visible = false;
+                checkBox1.Visible = false;
+                checkBox2.Visible = false;
+                checkBox3.Visible = false;
             }
             if (list == true)
             {
