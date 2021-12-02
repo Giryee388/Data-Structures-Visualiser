@@ -110,9 +110,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 289);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.Size = new System.Drawing.Size(81, 13);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Brzoma sprtiranja";
+            this.label1.Text = "Brzina sortiranja";
             // 
             // tbSpeed
             // 

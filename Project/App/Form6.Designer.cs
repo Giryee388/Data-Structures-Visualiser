@@ -143,8 +143,8 @@
             this.label1.Size = new System.Drawing.Size(328, 45);
             this.label1.TabIndex = 11;
             this.label1.Text = "Stek (Stack) je apstraktni tip podataka kao i jedan od načina na koji možemo da s" +
-                "kladištimo i organizujemo podatke u računaru.\r\nRadi po principu LIFO (Last in fi" +
-                "rst out).";
+    "kladištimo i organizujemo podatke u računaru.\r\nRadi po principu LIFO (Last in fi" +
+    "rst out).";
             // 
             // tabControl1
             // 

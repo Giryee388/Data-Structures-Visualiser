@@ -18,7 +18,7 @@ namespace App
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(label1.Text);
+            Clipboard.SetText(label2.Text);
         }
     }
 }

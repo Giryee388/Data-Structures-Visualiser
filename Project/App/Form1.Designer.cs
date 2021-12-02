@@ -58,11 +58,9 @@
             this.trackBar3 = new System.Windows.Forms.TrackBar();
             this.label3 = new System.Windows.Forms.Label();
             this.button14 = new System.Windows.Forms.Button();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.label2 = new System.Windows.Forms.Label();
             this.button11 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.button13 = new System.Windows.Forms.Button();
@@ -95,6 +93,8 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panelDropDown.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel11.SuspendLayout();
@@ -136,7 +136,7 @@
             this.panelDropDown.MaximumSize = new System.Drawing.Size(100, 130);
             this.panelDropDown.MinimumSize = new System.Drawing.Size(100, 25);
             this.panelDropDown.Name = "panelDropDown";
-            this.panelDropDown.Size = new System.Drawing.Size(100, 130);
+            this.panelDropDown.Size = new System.Drawing.Size(100, 25);
             this.panelDropDown.TabIndex = 18;
             this.panelDropDown.MouseLeave += new System.EventHandler(this.panelDropDown_MouseLeave);
             // 
@@ -449,16 +449,6 @@
             this.button14.UseVisualStyleBackColor = false;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(14, 132);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(97, 17);
-            this.checkBox2.TabIndex = 55;
-            this.checkBox2.Text = "Analiza (BETA)";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
             // trackBar2
             // 
             this.trackBar2.Location = new System.Drawing.Point(126, 116);
@@ -489,16 +479,6 @@
             this.button11.Text = "InOrder";
             this.button11.UseVisualStyleBackColor = false;
             this.button11.Click += new System.EventHandler(this.button11_Click_1);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(17, 52);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(97, 17);
-            this.checkBox1.TabIndex = 51;
-            this.checkBox1.Text = "Analiza (BETA)";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // trackBar1
             // 
@@ -804,6 +784,26 @@
             this.pictureBox2.TabIndex = 17;
             this.pictureBox2.TabStop = false;
             // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(14, 132);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(97, 17);
+            this.checkBox2.TabIndex = 55;
+            this.checkBox2.Text = "Analiza (BETA)";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(17, 52);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(97, 17);
+            this.checkBox1.TabIndex = 51;
+            this.checkBox1.Text = "Analiza (BETA)";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -909,11 +909,9 @@
         private System.Windows.Forms.TrackBar trackBar3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.TrackBar trackBar2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button13;
@@ -921,6 +919,8 @@
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
 
 
     }

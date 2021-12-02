@@ -17,11 +17,7 @@ namespace test
         {
             InitializeComponent();
         }
-        Form form1;
-        public Form2( Form1 form)
-        {
-            form1 = form;
-        }
+      
         int br = 0,br2 = 0;
         private void Form2_Load(object sender, EventArgs e)
         {
@@ -46,6 +42,7 @@ namespace test
             }
             else
             {
+                textBox1.Text = "";
                 MessageBox.Show("Input must be type int","Error");
             }
         }
@@ -84,7 +81,6 @@ namespace test
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form1 f1 = new Form1();
             Directory.CreateDirectory("Drva");
             string fileName = "Drva/trenutnoDrvo.txt";
             FileStream fs = File.Create(fileName);
@@ -97,12 +93,11 @@ namespace test
                 f.WriteLine(arr[i]);
                 //label3.Text = Convert.ToString(arr[i]);
             }
-            if (n != 0)
+            if (br>0)
             {
-                f1.tree = true;
-                f1.stack = false;
-                f1.red = false;
-                f1.stack = false;
+                FileStream jebemVamMaterStoNeRaditeNistaSamRadimProjekat = File.Create("da.txt");
+
+                jebemVamMaterStoNeRaditeNistaSamRadimProjekat.Dispose();
             }
             f.Dispose();
             this.Close();
@@ -115,9 +110,18 @@ namespace test
 
         private void button8_Click(object sender, EventArgs e)
         {
-            listBox2.Items.Add(textBox3.Text);
-            textBox3.Text = "";
-            br2++;
+            int n;
+            bool isNumeric = int.TryParse(textBox1.Text, out n);
+            if (isNumeric)
+            {
+                listBox2.Items.Add(textBox3.Text);
+                textBox3.Text = "";
+                br2++;
+            }
+            else
+            {
+                MessageBox.Show("Input must be type int", "Error");
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -185,6 +189,12 @@ namespace test
                 f.WriteLine(arr[i]);
                 //label3.Text = Convert.ToString(arr[i]);
             }
+            if (br2 > 0)
+            {
+                FileStream jebemVamMaterStoNeRaditeNistaSamRadimProjekat = File.Create("da.txt");
+
+                jebemVamMaterStoNeRaditeNistaSamRadimProjekat.Dispose();
+            }
             f.Close();
             this.Close();
         }
@@ -193,11 +203,19 @@ namespace test
         {
             if (e.KeyValue == 13)
             {
-                listBox2.Items.Add(textBox3.Text);
-                textBox3.Text = "";
-                br2++;
+                int n;
+                bool isNumeric = int.TryParse(textBox3.Text, out n);
+                if (isNumeric)
+                {
+                    listBox2.Items.Add(textBox3.Text);
+                    textBox3.Text = "";
+                    br2++;
+                }
+                else
+                {
+                    MessageBox.Show("Input must be type int", "Error");
+                }
             }
-        }
-        
+        }    
     }
 }

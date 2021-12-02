@@ -49,6 +49,8 @@ namespace App
             Font drawFont = new Font("Arial", Convert.ToInt32(form1.zoom * 16));
             SolidBrush cetka = new SolidBrush(Color.Black);
             SolidBrush stringCetka = new SolidBrush(Color.White);
+
+
         }
         public void ucitajListuIzBaseFaila(Element lista)
         {
@@ -60,14 +62,7 @@ namespace App
                 while (!f.EndOfStream)
                 {
                     temp = f.ReadLine();
-                    if (temp.Equals(""))
-                    {
-                        lista = dodajNaKraj(lista, null);
-                    }
-                    else
-                    {
-                        lista = dodajNaKraj(lista, Convert.ToInt32(temp));
-                    }
+                    lista = dodajNaKraj(lista, Convert.ToInt32(temp));
                 }
             }
             catch

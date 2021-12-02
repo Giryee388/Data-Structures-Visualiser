@@ -29,9 +29,18 @@ namespace test
 
         private void button1_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(textBox1.Text);
-            textBox1.Text = "";
-            br++;
+            int n;
+            bool isNumeric = int.TryParse(textBox1.Text, out n);
+            if (isNumeric)
+            {
+                listBox1.Items.Add(textBox1.Text);
+                textBox1.Text = "";
+                br++;
+            }
+            else
+            {
+                MessageBox.Show("Input must be type int", "Error");
+            }
         }
 
         private void textBox1_KeyUp(object sender, KeyEventArgs e)
@@ -76,8 +85,32 @@ namespace test
                 f.WriteLine(arr[i]);
                 //label3.Text = Convert.ToString(arr[i]);
             }
+            if (br > 0)
+            {
+                FileStream jebemVamMaterStoNeRaditeNistaSamRadimProjekat = File.Create("da.txt");
+
+                jebemVamMaterStoNeRaditeNistaSamRadimProjekat.Dispose();
+            }
             f.Dispose();
             this.Close();
+        }
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+            {
+                int n;
+                bool isNumeric = int.TryParse(textBox1.Text, out n);
+                if (isNumeric)
+                {
+                    listBox1.Items.Add(textBox1.Text);
+                    textBox1.Text = "";
+                    br++;
+                }
+                else
+                {
+                    MessageBox.Show("Input must be type int", "Error");
+                }
+            }
         }
     }
 }

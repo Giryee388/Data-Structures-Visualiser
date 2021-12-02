@@ -36,6 +36,7 @@ namespace test
 
         Drvo _drvo;
         Lista _lista;
+
         public Form1()
         {
             InitializeComponent();
@@ -59,6 +60,21 @@ namespace test
         public bool list = false;
         public bool red = false;
         public bool stack = false;
+        private bool tree_;
+        public bool Tree_
+         {
+            get
+            {
+                return tree_;
+            }
+            set
+            {
+                if (tree_ != value)
+                    tree_ = value;
+            }
+         }
+
+
 
         Element lista = new Element();
         Node koren = new Node();
@@ -219,14 +235,22 @@ namespace test
             while (Application.OpenForms.Count > 1)
             {
             }
-            //try
-            //{
-                _drvo.ucitajDrvoIzBaseFaila();
-                Refresh();
-           // }
-            //catch
-            //{
-            //}
+            try
+            {
+                if (File.Exists("da.txt"))
+                {
+                    File.Delete("da.txt");
+                    _drvo.ucitajDrvoIzBaseFaila();
+                    tree = true;
+                    red = false;
+                    stack = false;
+                    list = false;
+                    Refresh();
+                }
+            }
+            catch
+            {
+            }
         }
 
         //Nova Lista

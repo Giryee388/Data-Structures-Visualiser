@@ -173,8 +173,8 @@
             this.label1.Size = new System.Drawing.Size(304, 39);
             this.label1.TabIndex = 2;
             this.label1.Text = "Stablo kod koga su svi nivoi popunjeni izuzev poslednjeg i to\r\ntako da su popunja" +
-                "vanje vrsi sa leva na desno (ne moraju svi\r\ncvorovi da postoje ali moraju da bud" +
-                "u popunjeni sa leva strane)";
+    "vanje vrsi sa leva na desno (ne moraju svi\r\ncvorovi da postoje ali moraju da bud" +
+    "u popunjeni sa leva strane)";
             // 
             // textBox1
             // 
@@ -313,7 +313,7 @@
             this.label3.Size = new System.Drawing.Size(297, 26);
             this.label3.TabIndex = 0;
             this.label3.Text = "Savrseno binarno stablo je stablo kod koga su svi\r\nlistovi na istom nivou, takodj" +
-                "e svaki roditelj ima tacno 2 deteta";
+    "e svaki roditelj ima tacno 2 deteta";
             // 
             // timer1
             // 
