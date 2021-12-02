@@ -20,6 +20,7 @@ namespace test
         private bool isCollapsedFile = true;
         private bool isCollapsedSimulate = true;
         private bool isMaximized = true;
+        public bool preOrderAnalizaKeepGoing = false;
         /*
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
@@ -173,6 +174,7 @@ namespace test
             button1.Text = "Kreiraj novo drvo";
             button4.Text = "Kreuraj novu listu";
             button5.Text = "Simuliraj sortiranje";
+            button12.Text = "Kreiraj novi stack";
 
             textBox1.Size = new Size(190, 60);
             textBox1.Enabled = false;
@@ -364,20 +366,6 @@ namespace test
             }
         }
 
-        private void button11_Click(object sender, EventArgs e)
-        {
-            double precnik = 50 * zoom;
-            double offsetOdD = 150 * zoom;
-            double yOffsetDece = 90 * zoom;
-            double xOffsetDeceBase = 20 * zoom;
-
-            Point parent = new Point(D.X - Convert.ToInt32(precnik) / 2, D.Y - Convert.ToInt32(offsetOdD) - Convert.ToInt32(precnik) / 2);
-
-            double h = Math.Ceiling(Math.Log(n + 1) / Math.Log(2));
-            double xOffsetDece = Convert.ToInt32(Math.Pow(2, h - 1)) * xOffsetDeceBase;
-            _drvo.PreOrder(koren, parent, Convert.ToInt32(precnik), Convert.ToInt32(yOffsetDece), Convert.ToInt32(xOffsetDece));
-        }
-
         private void button12_Click(object sender, EventArgs e)
         {
             Form6 f6 = new Form6();
@@ -395,6 +383,172 @@ namespace test
             }
             catch
             {
+            }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            Refresh();
+            int sleep = 500;
+            if(trackBar1.Value == 2)
+            {
+                sleep = 750;
+            }
+
+
+            if (trackBar1.Value == 1)
+            {
+                sleep = 1000;
+            }
+
+
+            if (trackBar1.Value == 0)
+            {
+                sleep = 1250;
+            }
+
+
+            if (trackBar1.Value == 4)
+            {
+                sleep = 300;
+            }
+
+
+            if (trackBar1.Value == 5)
+            {
+                sleep = 150;
+            }
+
+            double precnik = 50 * zoom;
+            double offsetOdD = 150 * zoom;
+            double yOffsetDece = 90 * zoom;
+            double xOffsetDeceBase = 20 * zoom;
+
+
+
+            Point parent = new Point(D.X - Convert.ToInt32(precnik) / 2, D.Y - Convert.ToInt32(offsetOdD) - Convert.ToInt32(precnik) / 2);
+
+
+
+            double h = Math.Ceiling(Math.Log(n + 1) / Math.Log(2));
+            double xOffsetDece = Convert.ToInt32(Math.Pow(2, h - 1)) * xOffsetDeceBase;
+            if (!checkBox1.Checked)
+                _drvo.PreOrder(koren, parent, Convert.ToInt32(precnik), Convert.ToInt32(yOffsetDece), Convert.ToInt32(xOffsetDece), sleep);
+            else
+            {
+                //SAFTAM TI MUDA 
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            preOrderAnalizaKeepGoing = true;
+        }
+
+        private void button11_Click_1(object sender, EventArgs e)
+        {
+            Refresh();
+            int sleep = 500;
+            if (trackBar2.Value == 2)
+            {
+                sleep = 750;
+            }
+
+
+            if (trackBar2.Value == 1)
+            {
+                sleep = 1000;
+            }
+
+
+            if (trackBar2.Value == 0)
+            {
+                sleep = 1250;
+            }
+
+
+            if (trackBar2.Value == 4)
+            {
+                sleep = 300;
+            }
+
+
+            if (trackBar2.Value == 5)
+            {
+                sleep = 150;
+            }
+
+            double precnik = 50 * zoom;
+            double offsetOdD = 150 * zoom;
+            double yOffsetDece = 90 * zoom;
+            double xOffsetDeceBase = 20 * zoom;
+
+
+
+            Point parent = new Point(D.X - Convert.ToInt32(precnik) / 2, D.Y - Convert.ToInt32(offsetOdD) - Convert.ToInt32(precnik) / 2);
+
+
+
+            double h = Math.Ceiling(Math.Log(n + 1) / Math.Log(2));
+            double xOffsetDece = Convert.ToInt32(Math.Pow(2, h - 1)) * xOffsetDeceBase;
+            if (!checkBox1.Checked)
+                _drvo.InOrder(koren, parent, Convert.ToInt32(precnik), Convert.ToInt32(yOffsetDece), Convert.ToInt32(xOffsetDece), sleep);
+            else
+            {
+                //SAFTAM TI MUDA 
+            }
+        }
+        private void button14_Click(object sender, EventArgs e)
+        {
+            Refresh();
+            int sleep = 500;
+            if (trackBar3.Value == 2)
+            {
+                sleep = 750;
+            }
+
+
+            if (trackBar3.Value == 1)
+            {
+                sleep = 1000;
+            }
+
+
+            if (trackBar3.Value == 0)
+            {
+                sleep = 1250;
+            }
+
+
+            if (trackBar3.Value == 4)
+            {
+                sleep = 300;
+            }
+
+
+            if (trackBar3.Value == 5)
+            {
+                sleep = 150;
+            }
+
+            double precnik = 50 * zoom;
+            double offsetOdD = 150 * zoom;
+            double yOffsetDece = 90 * zoom;
+            double xOffsetDeceBase = 20 * zoom;
+
+
+
+            Point parent = new Point(D.X - Convert.ToInt32(precnik) / 2, D.Y - Convert.ToInt32(offsetOdD) - Convert.ToInt32(precnik) / 2);
+
+
+
+            double h = Math.Ceiling(Math.Log(n + 1) / Math.Log(2));
+            double xOffsetDece = Convert.ToInt32(Math.Pow(2, h - 1)) * xOffsetDeceBase;
+            if (!checkBox1.Checked)
+                _drvo.PostOrder(koren, parent, Convert.ToInt32(precnik), Convert.ToInt32(yOffsetDece), Convert.ToInt32(xOffsetDece), sleep);
+            else
+            {
+                //SAFTAM TI MUDA 
             }
         }
     }

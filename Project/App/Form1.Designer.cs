@@ -33,6 +33,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.panelDropDown = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.button12 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
@@ -44,8 +45,21 @@
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.trackBar3 = new System.Windows.Forms.TrackBar();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button14 = new System.Windows.Forms.Button();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.label2 = new System.Windows.Forms.Label();
             this.button11 = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel24 = new System.Windows.Forms.Panel();
+            this.panel25 = new System.Windows.Forms.Panel();
+            this.button13 = new System.Windows.Forms.Button();
+            this.panel26 = new System.Windows.Forms.Panel();
             this.button9 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -72,11 +86,13 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button12 = new System.Windows.Forms.Button();
             this.panelDropDown.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.panel19.SuspendLayout();
             this.panel20.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -106,7 +122,7 @@
             this.panelDropDown.Controls.Add(this.panel13);
             this.panelDropDown.Controls.Add(this.button10);
             this.panelDropDown.Location = new System.Drawing.Point(30, 0);
-            this.panelDropDown.MaximumSize = new System.Drawing.Size(100, 95);
+            this.panelDropDown.MaximumSize = new System.Drawing.Size(100, 130);
             this.panelDropDown.MinimumSize = new System.Drawing.Size(100, 25);
             this.panelDropDown.Name = "panelDropDown";
             this.panelDropDown.Size = new System.Drawing.Size(100, 25);
@@ -116,13 +132,24 @@
             // panel13
             // 
             this.panel13.BackColor = System.Drawing.SystemColors.Control;
+            this.panel13.Controls.Add(this.button12);
             this.panel13.Controls.Add(this.button1);
             this.panel13.Controls.Add(this.button4);
             this.panel13.Location = new System.Drawing.Point(0, 25);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(100, 69);
+            this.panel13.Size = new System.Drawing.Size(100, 103);
             this.panel13.TabIndex = 4;
             this.panel13.MouseLeave += new System.EventHandler(this.panel13_MouseLeave);
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(0, 68);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(100, 35);
+            this.button12.TabIndex = 30;
+            this.button12.Text = "button12";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // button1
             // 
@@ -222,8 +249,21 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.panel1.Controls.Add(this.checkBox3);
+            this.panel1.Controls.Add(this.trackBar3);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.button14);
+            this.panel1.Controls.Add(this.checkBox2);
+            this.panel1.Controls.Add(this.trackBar2);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.button11);
+            this.panel1.Controls.Add(this.checkBox1);
+            this.panel1.Controls.Add(this.trackBar1);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.panel24);
+            this.panel1.Controls.Add(this.panel25);
+            this.panel1.Controls.Add(this.button13);
+            this.panel1.Controls.Add(this.panel26);
             this.panel1.Controls.Add(this.button9);
             this.panel1.Controls.Add(this.button7);
             this.panel1.Controls.Add(this.button6);
@@ -243,34 +283,161 @@
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(690, 0);
+            this.panel1.Location = new System.Drawing.Point(623, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 410);
+            this.panel1.Size = new System.Drawing.Size(267, 410);
             this.panel1.TabIndex = 25;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(10, 299);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(97, 17);
+            this.checkBox3.TabIndex = 43;
+            this.checkBox3.Text = "Analiza (BETA)";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // trackBar3
+            // 
+            this.trackBar3.Location = new System.Drawing.Point(122, 283);
+            this.trackBar3.Maximum = 5;
+            this.trackBar3.Name = "trackBar3";
+            this.trackBar3.Size = new System.Drawing.Size(104, 45);
+            this.trackBar3.TabIndex = 42;
+            this.trackBar3.Value = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 283);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(90, 13);
+            this.label3.TabIndex = 41;
+            this.label3.Text = "Brzina prolazenja:";
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button14.Location = new System.Drawing.Point(13, 252);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(103, 23);
+            this.button14.TabIndex = 40;
+            this.button14.Text = "PostOrder";
+            this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(10, 224);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(97, 17);
+            this.checkBox2.TabIndex = 39;
+            this.checkBox2.Text = "Analiza (BETA)";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // trackBar2
+            // 
+            this.trackBar2.Location = new System.Drawing.Point(122, 208);
+            this.trackBar2.Maximum = 5;
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(104, 45);
+            this.trackBar2.TabIndex = 38;
+            this.trackBar2.Value = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 208);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(90, 13);
+            this.label2.TabIndex = 37;
+            this.label2.Text = "Brzina prolazenja:";
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(113, 88);
+            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.Location = new System.Drawing.Point(13, 177);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(75, 23);
-            this.button11.TabIndex = 30;
-            this.button11.Text = "PreOreder";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.button11.Size = new System.Drawing.Size(103, 23);
+            this.button11.TabIndex = 36;
+            this.button11.Text = "InOrder";
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click_1);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(14, 143);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(97, 17);
+            this.checkBox1.TabIndex = 35;
+            this.checkBox1.Text = "Analiza (BETA)";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(122, 127);
+            this.trackBar1.Maximum = 5;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(104, 45);
+            this.trackBar1.TabIndex = 34;
+            this.trackBar1.Value = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(11, 93);
+            this.label1.Location = new System.Drawing.Point(16, 127);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 13);
-            this.label1.TabIndex = 29;
-            this.label1.Text = "PreOrder Algoritam";
+            this.label1.Size = new System.Drawing.Size(90, 13);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "Brzina prolazenja:";
+            // 
+            // panel24
+            // 
+            this.panel24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.panel24.Location = new System.Drawing.Point(202, 84);
+            this.panel24.Name = "panel24";
+            this.panel24.Size = new System.Drawing.Size(196, 2);
+            this.panel24.TabIndex = 16;
+            // 
+            // panel25
+            // 
+            this.panel25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.panel25.Location = new System.Drawing.Point(208, 88);
+            this.panel25.Name = "panel25";
+            this.panel25.Size = new System.Drawing.Size(196, 2);
+            this.panel25.TabIndex = 15;
+            // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button13.Location = new System.Drawing.Point(13, 96);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(103, 23);
+            this.button13.TabIndex = 31;
+            this.button13.Text = "PreOrder";
+            this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // panel26
+            // 
+            this.panel26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
+            this.panel26.Location = new System.Drawing.Point(202, 86);
+            this.panel26.Name = "panel26";
+            this.panel26.Size = new System.Drawing.Size(198, 2);
+            this.panel26.TabIndex = 14;
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(150, 4);
+            this.button9.Location = new System.Drawing.Point(222, 4);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(33, 22);
             this.button9.TabIndex = 28;
@@ -280,7 +447,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(69, 3);
+            this.button7.Location = new System.Drawing.Point(141, 3);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 23);
             this.button7.TabIndex = 27;
@@ -290,7 +457,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(13, 2);
+            this.button6.Location = new System.Drawing.Point(85, 2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(50, 23);
             this.button6.TabIndex = 26;
@@ -301,7 +468,7 @@
             // panel21
             // 
             this.panel21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.panel21.Location = new System.Drawing.Point(5, 0);
+            this.panel21.Location = new System.Drawing.Point(6, 37);
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(2, 5000);
             this.panel21.TabIndex = 13;
@@ -309,7 +476,7 @@
             // panel22
             // 
             this.panel22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
-            this.panel22.Location = new System.Drawing.Point(3, 0);
+            this.panel22.Location = new System.Drawing.Point(4, 37);
             this.panel22.Name = "panel22";
             this.panel22.Size = new System.Drawing.Size(2, 5000);
             this.panel22.TabIndex = 12;
@@ -331,7 +498,7 @@
             // panel23
             // 
             this.panel23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.panel23.Location = new System.Drawing.Point(1, 0);
+            this.panel23.Location = new System.Drawing.Point(2, 37);
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(2, 5000);
             this.panel23.TabIndex = 11;
@@ -517,23 +684,12 @@
             this.pictureBox2.TabIndex = 17;
             this.pictureBox2.TabStop = false;
             // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(244, 143);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(213, 59);
-            this.button12.TabIndex = 30;
-            this.button12.Text = "button12";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(890, 410);
-            this.Controls.Add(this.button12);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
@@ -560,6 +716,9 @@
             this.panel11.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.panel19.ResumeLayout(false);
             this.panel20.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -614,9 +773,22 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Panel panel24;
+        private System.Windows.Forms.Panel panel25;
+        private System.Windows.Forms.Panel panel26;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.TrackBar trackBar3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button14;
 
 
     }

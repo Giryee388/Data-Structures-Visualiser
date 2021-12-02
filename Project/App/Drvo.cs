@@ -5,6 +5,7 @@ using System.Text;
 using System.Drawing;
 using System.IO;
 using test;
+using System.Media;
 
 namespace App
 {
@@ -131,9 +132,9 @@ namespace App
             {
             }
         }
-        public void PreOrder(Node root, Point parent, int a, int c1, double c2)
+        public void PreOrder(Node root, Point parent, int a, int c1, double c2, int sleep)
         {
-            int sleep = 1000;
+            
 
             Point W = new Point();
             Point Y = new Point();
@@ -142,21 +143,40 @@ namespace App
             Point parentC = new Point(parent.X+a, parent.Y+a);
             Point parentD = new Point(parent.X+a, parent.Y);
             
+
+
+
             Pen olovka = new Pen(Color.Green, Convert.ToInt32(form1.zoom * 6));
             Font drawFont = new Font("Arial", Convert.ToInt32(form1.zoom * 16));
-            SolidBrush cetka = new SolidBrush(Color.Black);
+            SolidBrush cetka = new SolidBrush(Color.Red);
             SolidBrush stringCetka = new SolidBrush(Color.White);
 
+
+
+
             System.Threading.Thread.Sleep(sleep);
-            g.DrawLine(olovka, parentA, parentB);
+            W.X = parentA.X;
+            W.Y = parentA.Y + a / 2;
+            g.DrawLine(olovka, parentA, W);
+            SystemSounds.Hand.Play();
+            g.FillEllipse(cetka, parentA.X - Convert.ToInt32(form1.zoom * 15) / 2, parentA.Y + a / 2 - Convert.ToInt32(form1.zoom * 15) / 2, Convert.ToInt32(form1.zoom * 15), Convert.ToInt32(form1.zoom * 15));
             if (root.left != null)
             {
+
+
                 W.X = parentB.X - Convert.ToInt32(c2);
                 W.Y = parentB.Y + c1 - a;
-                System.Threading.Thread.Sleep(sleep);
-                g.DrawLine(olovka, parentB, W);
 
-                PreOrder(root.left, W, a, c1, c2 / 2);
+                Y.X = parentB.X;
+                Y.Y = parentB.Y - a / 2;
+                System.Threading.Thread.Sleep(sleep);
+                g.DrawLine(olovka, Y, W);
+
+
+
+                PreOrder(root.left, W, a, c1, c2 / 2, sleep);
+
+
 
                 if (root.right != null)
                 {
@@ -177,21 +197,29 @@ namespace App
 
                     System.Threading.Thread.Sleep(sleep);
                     g.DrawLine(olovka, W, Y);
-                    PreOrder(root.right, W, a, c1, c2 / 2);
+
+
+
+                    PreOrder(root.right, W, a, c1, c2 / 2, sleep);
+
+
 
                     W.X = parentD.X + Convert.ToInt32(c2);
                     W.Y = parentD.Y + c1;
+                    Y.X = parentC.X;
+                    Y.Y = parentC.Y - a / 2;
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, W, Y);
 
                     System.Threading.Thread.Sleep(sleep);
-                    g.DrawLine(olovka, W, parentC);
-
-                    System.Threading.Thread.Sleep(sleep);
-                    g.DrawLine(olovka, parentD, parentC);
+                    g.DrawLine(olovka, parentD, Y);
                 }
                 else
                 {
-                    W.X = parentB.X - Convert.ToInt32(c2) + a;
-                    W.Y = parentB.Y + c1;
+                    
+
+                    W.X = parentA.X - Convert.ToInt32(c2) + a;
+                    W.Y = parentA.Y + c1;
 
                     System.Threading.Thread.Sleep(sleep);
                     g.DrawLine(olovka, W, parentC);
@@ -202,12 +230,443 @@ namespace App
             }
             else
             {
+                W.X = parentB.X;
+                W.Y = parentB.Y - a / 2;
+
+                g.DrawLine(olovka, W, parentB);
+
                 System.Threading.Thread.Sleep(sleep);
                 g.DrawLine(olovka, parentB, parentC);
                 System.Threading.Thread.Sleep(sleep);
                 g.DrawLine(olovka, parentC, parentD);
                 return;
 
+            }
+        }
+        //NE ZNAM KAKO OVO DA NAPRAVIM, TREBA ASINC DA BUDE A JA TO NE UMEM
+        //GLUP SAM RETARDIRAN I SAMO NE ZNAM DA URADIM CELU NOC SAM POKUSAVAO
+        //izvinite me
+
+        /*
+        public void PreOrderAnaliza(Node root, Point parent, int a, int c1, double c2, int sleep)
+        {
+
+
+            Point W = new Point();
+            Point Y = new Point();
+            Point parentA = parent;
+            Point parentB = new Point(parent.X, parent.Y + a);
+            Point parentC = new Point(parent.X + a, parent.Y + a);
+            Point parentD = new Point(parent.X + a, parent.Y);
+
+         * 
+         * 
+         * 
+            Pen olovka = new Pen(Color.Green, Convert.ToInt32(form1.zoom * 6));
+            Font drawFont = new Font("Arial", Convert.ToInt32(form1.zoom * 16));
+            SolidBrush cetka = new SolidBrush(Color.Red);
+            SolidBrush stringCetka = new SolidBrush(Color.White);
+
+         * 
+         * 
+         *
+            System.Threading.Thread.Sleep(sleep);
+            W.X = parentA.X;
+            W.Y = parentA.Y + a / 2;
+            g.DrawLine(olovka, parentA, W);
+            SystemSounds.Hand.Play();
+            g.FillEllipse(cetka, parentA.X - Convert.ToInt32(form1.zoom * 15) / 2, parentA.Y + a / 2 - Convert.ToInt32(form1.zoom * 15) / 2, Convert.ToInt32(form1.zoom * 15), Convert.ToInt32(form1.zoom * 15));
+            if (root.left != null)
+            {
+         * 
+         * 
+         * 
+                W.X = parentB.X - Convert.ToInt32(c2);
+                W.Y = parentB.Y + c1 - a;
+
+                Y.X = parentB.X;
+                Y.Y = parentB.Y - a / 2;
+                System.Threading.Thread.Sleep(sleep);
+                g.DrawLine(olovka, Y, W);
+
+         * 
+         * 
+         * 
+         * 
+                PreOrderAnaliza(root.left, W, a, c1, c2 / 2, sleep);
+
+         * 
+         * 
+         * 
+         * 
+                if (root.right != null)
+                {
+                    W.X = parentB.X + a - Convert.ToInt32(c2);
+                    W.Y = parentB.Y + c1 - a;
+
+                    Y.X = parentB.X + a / 2;
+                    Y.Y = parentB.Y;
+
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, W, Y);
+
+                    W.X = parentC.X - a + Convert.ToInt32(c2);
+                    W.Y = parentC.Y + c1 - a;
+
+                    Y.X = parentC.X - a / 2;
+                    Y.Y = parentC.Y;
+
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, W, Y);
+
+         * 
+         * 
+         * 
+                    PreOrderAnaliza(root.right, W, a, c1, c2 / 2, sleep);
+
+         * 
+         * 
+         * 
+                    W.X = parentD.X + Convert.ToInt32(c2);
+                    W.Y = parentD.Y + c1;
+                    Y.X = parentC.X;
+                    Y.Y = parentC.Y - a / 2;
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, W, Y);
+
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, parentD, Y);
+                }
+                else
+                {
+
+         * 
+         * 
+
+                    W.X = parentA.X - Convert.ToInt32(c2) + a;
+                    W.Y = parentA.Y + c1;
+
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, W, parentC);
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, parentC, parentD);
+                    return;
+         * 
+         * 
+         * 
+         * 
+                }
+            }
+            else
+            {
+                W.X = parentB.X;
+                W.Y = parentB.Y - a / 2;
+
+                g.DrawLine(olovka, W, parentB);
+
+                System.Threading.Thread.Sleep(sleep);
+                g.DrawLine(olovka, parentB, parentC);
+                System.Threading.Thread.Sleep(sleep);
+                g.DrawLine(olovka, parentC, parentD);
+                return;
+
+            }
+        }
+         */
+
+
+
+
+
+
+        public void InOrder(Node root, Point parent, int a, int c1, double c2, int sleep)
+        {
+
+
+
+
+            Point W = new Point();
+            Point Y = new Point();
+            Point parentA = parent;
+            Point parentB = new Point(parent.X, parent.Y + a);
+            Point parentC = new Point(parent.X + a, parent.Y + a);
+            Point parentD = new Point(parent.X + a, parent.Y);
+
+
+
+
+            Pen olovka = new Pen(Color.Green, Convert.ToInt32(form1.zoom * 6));
+            Font drawFont = new Font("Arial", Convert.ToInt32(form1.zoom * 16));
+            SolidBrush cetka = new SolidBrush(Color.Red);
+            SolidBrush stringCetka = new SolidBrush(Color.White);
+
+
+
+            System.Threading.Thread.Sleep(sleep);
+            W.X = parentA.X;
+            W.Y = parentA.Y + a / 2;
+            g.DrawLine(olovka, parentA, W);
+            
+
+
+            if (root.left != null)
+            {
+
+
+                W.X = parentB.X - Convert.ToInt32(c2);
+                W.Y = parentB.Y + c1 - a;
+
+                Y.X = parentB.X;
+                Y.Y = parentB.Y - a / 2;
+                System.Threading.Thread.Sleep(sleep);
+                g.DrawLine(olovka, Y, W);
+
+                
+                    
+                    
+                InOrder(root.left, W, a, c1, c2 / 2, sleep);
+
+
+
+
+                if (root.right != null)
+                {
+                    W.X = parentB.X + a - Convert.ToInt32(c2);
+                    W.Y = parentB.Y + c1 - a;
+
+                    Y.X = parentB.X + a / 2;
+                    Y.Y = parentB.Y;
+
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, W, Y);
+                    SystemSounds.Hand.Play();
+                    g.FillEllipse(cetka, parentB.X + a / 2 - Convert.ToInt32(form1.zoom * 15) / 2, parentC.Y - Convert.ToInt32(form1.zoom * 15) / 2, Convert.ToInt32(form1.zoom * 15), Convert.ToInt32(form1.zoom * 15));
+
+                    W.X = parentC.X - a + Convert.ToInt32(c2);
+                    W.Y = parentC.Y + c1 - a;
+
+                    Y.X = parentC.X - a / 2;
+                    Y.Y = parentC.Y;
+
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, W, Y);
+
+
+
+                    InOrder(root.right, W, a, c1, c2 / 2, sleep);
+
+
+
+
+                    W.X = parentD.X + Convert.ToInt32(c2);
+                    W.Y = parentD.Y + c1;
+                    Y.X = parentC.X;
+                    Y.Y = parentC.Y - a / 2;
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, W, Y);
+
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, parentD, Y);
+                }
+                else
+                {
+
+
+                    W.X = parentA.X - Convert.ToInt32(c2) + a;
+                    W.Y = parentA.Y + c1;
+
+                    Y.X = parentC.X - a / 2;
+                    Y.Y = parentC.Y;
+
+
+
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, W, Y);
+
+
+
+                    SystemSounds.Hand.Play();
+                    g.FillEllipse(cetka, parentB.X + a / 2 - Convert.ToInt32(form1.zoom * 15) / 2, parentC.Y - Convert.ToInt32(form1.zoom * 15) / 2, Convert.ToInt32(form1.zoom * 15), Convert.ToInt32(form1.zoom * 15));
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, parentC, Y);
+
+
+
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, parentC, parentD);
+
+                    return;
+                }
+            }
+            else
+            {
+                W.X = parentB.X;
+                W.Y = parentB.Y - a / 2;
+
+                g.DrawLine(olovka, W, parentB);
+
+
+                System.Threading.Thread.Sleep(sleep);
+                g.DrawLine(olovka, parentB, parentC);
+                SystemSounds.Hand.Play();
+                g.FillEllipse(cetka, parentB.X + a/2 - Convert.ToInt32(form1.zoom * 15) / 2, parentC.Y - Convert.ToInt32(form1.zoom * 15) / 2, Convert.ToInt32(form1.zoom * 15), Convert.ToInt32(form1.zoom * 15));
+                
+                
+                System.Threading.Thread.Sleep(sleep);
+                g.DrawLine(olovka, parentC, parentD);
+                
+                
+                return;
+            }
+        }
+
+
+
+        public void PostOrder(Node root, Point parent, int a, int c1, double c2, int sleep)
+        {
+
+
+
+
+            Point W = new Point();
+            Point Y = new Point();
+            Point parentA = parent;
+            Point parentB = new Point(parent.X, parent.Y + a);
+            Point parentC = new Point(parent.X + a, parent.Y + a);
+            Point parentD = new Point(parent.X + a, parent.Y);
+
+
+
+
+            Pen olovka = new Pen(Color.Green, Convert.ToInt32(form1.zoom * 6));
+            Font drawFont = new Font("Arial", Convert.ToInt32(form1.zoom * 16));
+            SolidBrush cetka = new SolidBrush(Color.Red);
+            SolidBrush stringCetka = new SolidBrush(Color.White);
+
+
+
+            System.Threading.Thread.Sleep(sleep);
+            W.X = parentA.X;
+            W.Y = parentA.Y + a / 2;
+            g.DrawLine(olovka, parentA, W);
+
+
+
+            if (root.left != null)
+            {
+
+
+                W.X = parentB.X - Convert.ToInt32(c2);
+                W.Y = parentB.Y + c1 - a;
+
+                Y.X = parentB.X;
+                Y.Y = parentB.Y - a / 2;
+                System.Threading.Thread.Sleep(sleep);
+                g.DrawLine(olovka, Y, W);
+
+
+
+
+                PostOrder(root.left, W, a, c1, c2 / 2, sleep);
+
+
+
+
+                if (root.right != null)
+                {
+                    W.X = parentB.X + a - Convert.ToInt32(c2);
+                    W.Y = parentB.Y + c1 - a;
+
+                    Y.X = parentB.X + a / 2;
+                    Y.Y = parentB.Y;
+
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, W, Y);
+                    
+
+                    W.X = parentC.X - a + Convert.ToInt32(c2);
+                    W.Y = parentC.Y + c1 - a;
+
+                    Y.X = parentC.X - a / 2;
+                    Y.Y = parentC.Y;
+
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, W, Y);
+
+
+
+                    PostOrder(root.right, W, a, c1, c2 / 2, sleep);
+
+
+
+
+                    W.X = parentD.X + Convert.ToInt32(c2);
+                    W.Y = parentD.Y + c1;
+                    Y.X = parentC.X;
+                    Y.Y = parentC.Y - a / 2;
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, W, Y);
+
+
+                    SystemSounds.Hand.Play();
+                    g.FillEllipse(cetka, parentC.X - Convert.ToInt32(form1.zoom * 15) / 2, parentC.Y - a / 2 - Convert.ToInt32(form1.zoom * 15) / 2, Convert.ToInt32(form1.zoom * 15), Convert.ToInt32(form1.zoom * 15));
+
+
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, parentD, Y);
+                }
+                else
+                {
+
+
+                    W.X = parentA.X - Convert.ToInt32(c2) + a;
+                    W.Y = parentA.Y + c1;
+
+                    Y.X = parentC.X - a / 2;
+                    Y.Y = parentC.Y;
+
+
+
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, W, Y);
+
+
+
+                    System.Threading.Thread.Sleep(sleep);
+                    g.DrawLine(olovka, parentC, Y);
+
+
+                    
+                    System.Threading.Thread.Sleep(sleep);
+                    
+                    
+                    SystemSounds.Hand.Play();
+                    g.FillEllipse(cetka, parentC.X - Convert.ToInt32(form1.zoom * 15) / 2, parentC.Y - a / 2 - Convert.ToInt32(form1.zoom * 15) / 2, Convert.ToInt32(form1.zoom * 15), Convert.ToInt32(form1.zoom * 15));
+                    
+                    
+                    g.DrawLine(olovka, parentC, parentD);
+
+                    return;
+                }
+            }
+            else
+            {
+                W.X = parentB.X;
+                W.Y = parentB.Y - a / 2;
+
+                g.DrawLine(olovka, W, parentB);
+
+
+                System.Threading.Thread.Sleep(sleep);
+                g.DrawLine(olovka, parentB, parentC);
+
+
+                System.Threading.Thread.Sleep(sleep);
+                g.DrawLine(olovka, parentC, parentD);
+                SystemSounds.Hand.Play();
+                g.FillEllipse(cetka, parentC.X - Convert.ToInt32(form1.zoom * 15) / 2, parentC.Y - a / 2 - Convert.ToInt32(form1.zoom * 15) / 2, Convert.ToInt32(form1.zoom * 15), Convert.ToInt32(form1.zoom * 15));
+
+                return;
             }
         }
     }
