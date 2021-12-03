@@ -136,7 +136,7 @@
             this.panelDropDown.MaximumSize = new System.Drawing.Size(100, 130);
             this.panelDropDown.MinimumSize = new System.Drawing.Size(100, 25);
             this.panelDropDown.Name = "panelDropDown";
-            this.panelDropDown.Size = new System.Drawing.Size(100, 110);
+            this.panelDropDown.Size = new System.Drawing.Size(100, 25);
             this.panelDropDown.TabIndex = 18;
             this.panelDropDown.MouseLeave += new System.EventHandler(this.panelDropDown_MouseLeave);
             // 
