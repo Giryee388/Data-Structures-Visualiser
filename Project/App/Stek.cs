@@ -71,7 +71,7 @@ namespace App
             while (!f.EndOfStream)
             {
                 temp = f.ReadLine();
-                form1.Stek = dodajNaKraj(Stek, Convert.ToInt32(temp));
+                //form1.Stek = dodajNaKraj(Stek, Convert.ToInt32(temp));
             }
 
         }

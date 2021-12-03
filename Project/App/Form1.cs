@@ -193,6 +193,7 @@ namespace test
             button4.Text = "Kreuraj novu listu";
             button5.Text = "Simuliraj sortiranje";
             button12.Text = "Kreiraj novi stack";
+            button20.Text = "Kreiraj novi graf";
 
             textBox1.Size = new Size(190, 60);
             textBox1.Enabled = false;
