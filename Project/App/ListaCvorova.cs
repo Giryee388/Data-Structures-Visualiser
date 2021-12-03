@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace App
 {
-    class ListaCvorova
+    public class ListaCvorova
     {
         public int? vrednost { get; set; }
         public ListaCvorova sledeci { get; set; }

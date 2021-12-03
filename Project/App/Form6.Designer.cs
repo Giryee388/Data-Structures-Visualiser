@@ -56,10 +56,11 @@
             this.tabPage5.Controls.Add(this.textBox1);
             this.tabPage5.Controls.Add(this.listBox1);
             this.tabPage5.Controls.Add(this.label1);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Location = new System.Drawing.Point(4, 25);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(561, 269);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage5.Size = new System.Drawing.Size(751, 334);
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "Stek";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -67,17 +68,19 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(12, 77);
+            this.label16.Location = new System.Drawing.Point(16, 95);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(246, 13);
+            this.label16.Size = new System.Drawing.Size(331, 17);
             this.label16.TabIndex = 19;
             this.label16.Text = "Prilikom unosa steka raspored elemenata je poznat";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(15, 235);
+            this.button2.Location = new System.Drawing.Point(20, 289);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(337, 23);
+            this.button2.Size = new System.Drawing.Size(449, 28);
             this.button2.TabIndex = 18;
             this.button2.Text = "Generisi stek";
             this.button2.UseVisualStyleBackColor = true;
@@ -85,9 +88,10 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(176, 191);
+            this.button4.Location = new System.Drawing.Point(235, 235);
+            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(176, 23);
+            this.button4.Size = new System.Drawing.Size(235, 28);
             this.button4.TabIndex = 17;
             this.button4.Text = "Obrisi sve elemente";
             this.button4.UseVisualStyleBackColor = true;
@@ -95,9 +99,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(176, 162);
+            this.button3.Location = new System.Drawing.Point(235, 199);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(176, 23);
+            this.button3.Size = new System.Drawing.Size(235, 28);
             this.button3.TabIndex = 16;
             this.button3.Text = "Obrisi poslednji element";
             this.button3.UseVisualStyleBackColor = true;
@@ -105,9 +110,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(176, 133);
+            this.button1.Location = new System.Drawing.Point(235, 164);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(176, 23);
+            this.button1.Size = new System.Drawing.Size(235, 28);
             this.button1.TabIndex = 15;
             this.button1.Text = "Potvrdi ulaz";
             this.button1.UseVisualStyleBackColor = true;
@@ -115,32 +121,37 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(8, 114);
+            this.label2.Location = new System.Drawing.Point(11, 140);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(160, 19);
+            this.label2.Size = new System.Drawing.Size(213, 23);
             this.label2.TabIndex = 14;
             this.label2.Text = "Unos elemenata jedan po jedan";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(15, 136);
+            this.textBox1.Location = new System.Drawing.Point(20, 167);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(144, 20);
+            this.textBox1.Size = new System.Drawing.Size(191, 22);
             this.textBox1.TabIndex = 13;
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(366, 7);
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(488, 9);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(180, 251);
+            this.listBox1.Size = new System.Drawing.Size(239, 308);
             this.listBox1.TabIndex = 12;
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(12, 15);
+            this.label1.Location = new System.Drawing.Point(16, 18);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(328, 45);
+            this.label1.Size = new System.Drawing.Size(437, 55);
             this.label1.TabIndex = 11;
             this.label1.Text = "Stek (Stack) je apstraktni tip podataka kao i jedan od načina na koji možemo da s" +
     "kladištimo i organizujemo podatke u računaru.\r\nRadi po principu LIFO (Last in fi" +
@@ -151,22 +162,24 @@
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.MaximumSize = new System.Drawing.Size(569, 295);
-            this.tabControl1.MinimumSize = new System.Drawing.Size(569, 295);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.MaximumSize = new System.Drawing.Size(759, 363);
+            this.tabControl1.MinimumSize = new System.Drawing.Size(759, 363);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(569, 295);
+            this.tabControl1.Size = new System.Drawing.Size(759, 363);
             this.tabControl1.TabIndex = 11;
             // 
             // Form6
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(562, 292);
+            this.ClientSize = new System.Drawing.Size(749, 359);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form6";
             this.Text = "Novi stek";
             this.Load += new System.EventHandler(this.Form6_Load);

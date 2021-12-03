@@ -5,9 +5,10 @@ using System.Text;
 
 namespace App
 {
-    class ListaVeza
+    public class ListaVeza
     {
-        private ListaCvorova izvor { get; set; }
-        private ListaVeza sledeci { get; set; }
+        public int? value { get; set; }
+        public ListaCvorova izvor { get; set; }
+        public ListaVeza sledeci { get; set; }
     }
 }

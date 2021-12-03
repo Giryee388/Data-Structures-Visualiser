@@ -49,7 +49,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
@@ -67,6 +66,7 @@
             this.button5.TabIndex = 21;
             this.button5.Text = "Obrisi sve cvorove";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -77,6 +77,7 @@
             this.button6.TabIndex = 20;
             this.button6.Text = "Obrisi poslednji cvor";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
@@ -87,6 +88,7 @@
             this.button7.TabIndex = 19;
             this.button7.Text = "Nastavi na unos tezina";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
@@ -97,6 +99,7 @@
             this.button8.TabIndex = 18;
             this.button8.Text = "Potvrdi ulaz";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // label7
             // 
@@ -113,7 +116,7 @@
             this.textBox3.Location = new System.Drawing.Point(20, 167);
             this.textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(191, 22);
+            this.textBox3.Size = new System.Drawing.Size(190, 22);
             this.textBox3.TabIndex = 16;
             // 
             // listBox2
@@ -132,10 +135,10 @@
             this.label3.Location = new System.Drawing.Point(17, 22);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(375, 34);
+            this.label3.Size = new System.Drawing.Size(379, 34);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Tezinski grafovi su oni kod kojih vezenemaju istu „tezinu“, \r\ntacnije grane grafo" +
-    "va mogu da imaju vrednosti.";
+            this.label3.Text = "Tezinski grafovi su oni kod kojih veze nemaju istu „tezinu“, \r\ntacnije grane graf" +
+    "ova mogu da imaju vrednosti.";
             // 
             // tabPage1
             // 
@@ -171,7 +174,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 95);
+            this.label4.Location = new System.Drawing.Point(17, 88);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(416, 17);
@@ -197,6 +200,7 @@
             this.button4.TabIndex = 7;
             this.button4.Text = "Obrisi sve cvorove";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -207,6 +211,7 @@
             this.button3.TabIndex = 6;
             this.button3.Text = "Obrisi poslednji cvor";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -217,6 +222,7 @@
             this.button2.TabIndex = 5;
             this.button2.Text = "Generisi graf";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -227,11 +233,12 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "Potvrdi ulaz";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 146);
+            this.label2.Location = new System.Drawing.Point(17, 146);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(193, 17);
@@ -254,8 +261,9 @@
             this.textBox1.Location = new System.Drawing.Point(20, 167);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(193, 22);
+            this.textBox1.Size = new System.Drawing.Size(191, 22);
             this.textBox1.TabIndex = 1;
+            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // tabControl1
             // 
@@ -291,7 +299,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(17, 91);
+            this.label5.Location = new System.Drawing.Point(17, 87);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(416, 17);
             this.label5.TabIndex = 23;
@@ -306,6 +314,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form5";
             this.Text = "Novi graf";
+            this.Load += new System.EventHandler(this.Form5_Load);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -337,7 +346,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label5;

@@ -27,6 +27,8 @@ namespace test
         public Form1()
         {
             InitializeComponent();
+            this.MouseWheel += new MouseEventHandler(Form1_MouseWheel);
+
         }
         public double zoom = 1;
         public int n = 0;
@@ -46,6 +48,7 @@ namespace test
         public bool list = false;
         public bool red = false;
         public bool stack = false;
+        public bool graph = false;
 
         public Element lista = new Element();
         Node koren = new Node();
@@ -123,7 +126,7 @@ namespace test
                 parent.Y = D.Y;
                 _lista.drawingLista(lista, parent, duzinaSekcijeElementa, visinaSekcijeElementa, razdaljinaOdProslog, precnikKorena);
 
-                
+
             }
         }
 
@@ -217,6 +220,27 @@ namespace test
                 Refresh();
             }
         }
+        void Form1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta > 0)
+            {
+                zoom += 0.2;
+                textBox1.Text = Convert.ToString(zoom);
+                Refresh();
+            }
+            if (e.Delta < 0)
+            {
+                if (zoom < 0.2)
+                    zoom = 0.2;
+                if (zoom != 0.2)
+                {
+                    zoom -= 0.2;
+                    textBox1.Text = Convert.ToString(zoom);
+                    Refresh();
+                }
+            }
+        }
+
         #endregion
         #region Dugmici Gornji toolbar
         //Novo Drvo
@@ -255,16 +279,16 @@ namespace test
             }
             //try
             //{
-                if (File.Exists("da.txt"))
-                {
-                    File.Delete("da.txt");
-                    _lista.ucitajListuIzBaseFaila();
-                    tree = false;
-                    list = true;
-                    red = false;
-                    stack = false;
-                    Refresh();
-                }
+            if (File.Exists("da.txt"))
+            {
+                File.Delete("da.txt");
+                _lista.ucitajListuIzBaseFaila();
+                tree = false;
+                list = true;
+                red = false;
+                stack = false;
+                Refresh();
+            }
             //}
             //catch
             //{
@@ -355,7 +379,7 @@ namespace test
                 WindowState = FormWindowState.Maximized;
             }
         }
-        
+
         //close
         private void button9_Click(object sender, EventArgs e)
         {
@@ -414,13 +438,39 @@ namespace test
             {
             }
         }
+        //Novi Graph
+        private void button20_Click(object sender, EventArgs e)
+        {
+            Form5 f5 = new Form5();
+            f5.ShowDialog();
+            /*while (Application.OpenForms.Count > 1)
+            {
+            }
+            //try
+            //{
+            if (File.Exists("da.txt"))
+            {
+                File.Delete("da.txt");
+                _graf.ucitajGrafIzBaseFaila();
+                tree = false;
+                list = false;
+                red = false;
+                stack = false;
+                graph = true;
+                Refresh();
+            }
+            //}
+            //catch
+            //{
+            //}*/
+        }
         #endregion
         #region Funkcije za drvo
         private void button13_Click(object sender, EventArgs e)
         {
             Refresh();
             int sleep = 500;
-            if(trackBar1.Value == 2)
+            if (trackBar1.Value == 2)
             {
                 sleep = 750;
             }
@@ -645,6 +695,7 @@ namespace test
             f11.ShowDialog();
         }
         #endregion
+
     }
 }
 
