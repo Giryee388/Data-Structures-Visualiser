@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
@@ -41,7 +42,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -76,6 +76,16 @@
             this.tabPage1.Text = "Jednosmerno povezana lista";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(13, 205);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(337, 23);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "Generisi listu";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -92,7 +102,7 @@
             this.label1.Size = new System.Drawing.Size(291, 26);
             this.label1.TabIndex = 10;
             this.label1.Text = "Lista kod koje svaki element ima samo pokazivac na sledeci\r\nje jednosmerno poveza" +
-                "na lista";
+    "na lista";
             // 
             // button4
             // 
@@ -158,16 +168,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Obostrano povezana lista";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(13, 194);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(337, 23);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "Generisi listu";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form3
             // 

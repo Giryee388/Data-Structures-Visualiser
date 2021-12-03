@@ -43,16 +43,6 @@ namespace test
             }
         }
 
-        private void textBox1_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyValue == 13)
-            {
-                listBox1.Items.Add(textBox1.Text);
-                textBox1.Text = "";
-                br++;
-            }
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             try

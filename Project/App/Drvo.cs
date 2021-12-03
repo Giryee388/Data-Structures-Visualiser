@@ -373,12 +373,6 @@ namespace App
             }
         }
          */
-
-
-
-
-
-
         public void InOrder(Node root, Point parent, int a, int c1, double c2, int sleep)
         {
 
@@ -519,9 +513,6 @@ namespace App
                 return;
             }
         }
-
-
-
         public void PostOrder(Node root, Point parent, int a, int c1, double c2, int sleep)
         {
 

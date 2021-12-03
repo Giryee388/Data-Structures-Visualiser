@@ -16,23 +16,10 @@ namespace test
 {
     public partial class Form1 : Form
     {
-
         private bool isCollapsedFile = true;
         private bool isCollapsedSimulate = true;
         private bool isMaximized = true;
         public bool preOrderAnalizaKeepGoing = false;
-        /*
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,
-            int nTopRect,
-            int nRightRect,
-            int nBottomRect,
-            int nWidthEllipse,
-            int nHeightEllipse
-        );*/
 
         Drvo _drvo;
         Lista _lista;
@@ -41,7 +28,6 @@ namespace test
         {
             InitializeComponent();
         }
-
         public double zoom = 1;
         public int n = 0;
 
@@ -60,38 +46,20 @@ namespace test
         public bool list = false;
         public bool red = false;
         public bool stack = false;
-        private bool tree_;
-        public bool Tree_
-         {
-            get
-            {
-                return tree_;
-            }
-            set
-            {
-                if (tree_ != value)
-                    tree_ = value;
-            }
-         }
 
-
-
-        Element lista = new Element();
+        public Element lista = new Element();
         Node koren = new Node();
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-
             if (tree == true)
             {
                 panel27.Visible = true;
-
 
                 double precnik = 50 * zoom;
                 double offsetOdD = 150 * zoom;
                 double yOffsetDece = 90 * zoom;
                 double xOffsetDeceBase = 20 * zoom;
-
 
                 koren = _drvo.generisiDrvoIzNiza(arr, koren, 0, n);
                 koren.value = arr[0];
@@ -104,27 +72,24 @@ namespace test
 
                 Point parent = new Point();
 
-
                 //crtanje korena
-                if (n > 0)
-                {
-                    parent.X = D.X - Convert.ToInt32(precnik) / 2;
-                    parent.Y = D.Y - Convert.ToInt32(offsetOdD) - Convert.ToInt32(precnik) / 2;
 
-                    g.FillEllipse(cetka, parent.X, parent.Y, Convert.ToInt32(precnik), Convert.ToInt32(precnik));
-                    parent.Y = D.Y - Convert.ToInt32(offsetOdD) - Convert.ToInt32(precnik) / 3;
-                    parent.X = D.X - Convert.ToInt32(precnik) / 3;
-                    g.DrawString(Convert.ToString(koren.value), drawFont, stringCetka, parent.X, parent.Y);
-                    parent.X = D.X - Convert.ToInt32(precnik) / 2;
-                    parent.Y = D.Y - Convert.ToInt32(offsetOdD) - Convert.ToInt32(precnik) / 2;
+                parent.X = D.X - Convert.ToInt32(precnik) / 2;
+                parent.Y = D.Y - Convert.ToInt32(offsetOdD) - Convert.ToInt32(precnik) / 2;
 
-                    double h = Math.Ceiling(Math.Log(n + 1) / Math.Log(2));
+                g.FillEllipse(cetka, parent.X, parent.Y, Convert.ToInt32(precnik), Convert.ToInt32(precnik));
+                parent.Y = D.Y - Convert.ToInt32(offsetOdD) - Convert.ToInt32(precnik) / 3;
+                parent.X = D.X - Convert.ToInt32(precnik) / 3;
+                g.DrawString(Convert.ToString(koren.value), drawFont, stringCetka, parent.X, parent.Y);
+                parent.X = D.X - Convert.ToInt32(precnik) / 2;
+                parent.Y = D.Y - Convert.ToInt32(offsetOdD) - Convert.ToInt32(precnik) / 2;
 
-                    double xOffsetDece = Convert.ToInt32(Math.Pow(2, h - 1)) * xOffsetDeceBase;
+                double h = Math.Ceiling(Math.Log(n + 1) / Math.Log(2));
 
-                    //crtanje ostatka dece
-                    _drvo.drawingDrvo(koren, parent, Convert.ToInt32(precnik), Convert.ToInt32(yOffsetDece), Convert.ToInt32(xOffsetDece));
-                }
+                double xOffsetDece = Convert.ToInt32(Math.Pow(2, h - 1)) * xOffsetDeceBase;
+
+                //crtanje ostatka dece
+                _drvo.drawingDrvo(koren, parent, Convert.ToInt32(precnik), Convert.ToInt32(yOffsetDece), Convert.ToInt32(xOffsetDece));
                 return;
             }
             else
@@ -133,9 +98,35 @@ namespace test
             }
             if (list == true)
             {
+                //Funkcije za listu panel . vidljive = tacno
 
+                double precnikKorena = 50 * zoom;
+                double duzinaSekcijeElementa = 90 * zoom;
+                double visinaSekcijeElementa = 35 * zoom;
+                double razdaljinaOdProslog = 70 * zoom;
+                double xOffsetOdD = 400 * zoom;
+
+                Graphics g = e.Graphics;
+                Font drawFont = new Font("Arial", Convert.ToInt32(zoom * 16));
+                SolidBrush cetka = new SolidBrush(Color.Black);
+                SolidBrush stringCetka = new SolidBrush(Color.White);
+                Pen olovka = new Pen(Color.DarkGray, Convert.ToInt32(zoom * 6));
+
+                Point parent = new Point();
+                parent.X = D.X - Convert.ToInt32(xOffsetOdD);
+                parent.Y = D.Y;
+
+                g.DrawEllipse(olovka, parent.X, parent.Y, Convert.ToInt32(precnikKorena), Convert.ToInt32(precnikKorena));
+                g.FillEllipse(cetka, parent.X, parent.Y, Convert.ToInt32(precnikKorena), Convert.ToInt32(precnikKorena));
+
+                parent.X = D.X - Convert.ToInt32(xOffsetOdD);
+                parent.Y = D.Y;
+                _lista.drawingLista(lista, parent, duzinaSekcijeElementa, visinaSekcijeElementa, razdaljinaOdProslog, precnikKorena);
+
+                
             }
         }
+
         #region Pomeranje
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -182,13 +173,14 @@ namespace test
             }
         }
         #endregion
-        #region ResponsiveUI
+        #region Load
         private void Form1_Load(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Maximized;
 
             _lista = new Lista(CreateGraphics(), this);
             _drvo = new Drvo(CreateGraphics(), this);
+
             D.X = ClientRectangle.Width / 2 - 125;
             D.Y = ClientRectangle.Height / 2;
 
@@ -226,7 +218,7 @@ namespace test
             }
         }
         #endregion
-
+        #region Dugmici Gornji toolbar
         //Novo Drvo
         private void button1_Click(object sender, EventArgs e)
         {
@@ -261,19 +253,25 @@ namespace test
             while (Application.OpenForms.Count > 1)
             {
             }
-            try
-            {
-                //_lista.ucitajListuIzBaseFaila();
-                tree = true;
-                list = false;
-                red = false;
-                stack = false;
-            }
-            catch
-            {
-            }
+            //try
+            //{
+                if (File.Exists("da.txt"))
+                {
+                    File.Delete("da.txt");
+                    _lista.ucitajListuIzBaseFaila();
+                    tree = false;
+                    list = true;
+                    red = false;
+                    stack = false;
+                    Refresh();
+                }
+            //}
+            //catch
+            //{
+            //}
         }
 
+        //Sortiranje
         private void button5_Click(object sender, EventArgs e)
         {
             Form4 f4 = new Form4();
@@ -337,11 +335,13 @@ namespace test
             }
         }
 
+        //minimize
         private void button6_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
         }
 
+        //maximize
         private void button7_Click(object sender, EventArgs e)
         {
             if (isMaximized == true)
@@ -355,7 +355,8 @@ namespace test
                 WindowState = FormWindowState.Maximized;
             }
         }
-
+        
+        //close
         private void button9_Click(object sender, EventArgs e)
         {
             Close();
@@ -393,6 +394,7 @@ namespace test
             }
         }
 
+        //Novi Stack
         private void button12_Click(object sender, EventArgs e)
         {
             Form6 f6 = new Form6();
@@ -402,7 +404,7 @@ namespace test
             }
             try
             {
-                //_lista.ucitajListuIzBaseFaila();
+
                 tree = false;
                 list = false;
                 red = false;
@@ -412,7 +414,8 @@ namespace test
             {
             }
         }
-
+        #endregion
+        #region Funkcije za drvo
         private void button13_Click(object sender, EventArgs e)
         {
             Refresh();
@@ -466,7 +469,6 @@ namespace test
                 //SAFTAM TI MUDA 
             }
         }
-
         private void button11_Click_1(object sender, EventArgs e)
         {
             Refresh();
@@ -573,7 +575,6 @@ namespace test
                 //SAFTAM TI MUDA 
             }
         }
-
         private void button15_Click(object sender, EventArgs e)
         {
             Refresh();
@@ -623,31 +624,27 @@ namespace test
                 //SAFTAM TI MUDA 
             }
         }
-
         private void button16_Click(object sender, EventArgs e)
         {
             Form10 f10 = new Form10();
             f10.ShowDialog();
         }
-
         private void button18_Click(object sender, EventArgs e)
         {
             Form7 f7 = new Form7();
             f7.ShowDialog();
         }
-
         private void button19_Click(object sender, EventArgs e)
         {
             Form9 f9 = new Form9();
             f9.ShowDialog();
         }
-
         private void button17_Click(object sender, EventArgs e)
         {
             Form11 f11 = new Form11();
             f11.ShowDialog();
         }
-
+        #endregion
     }
 }
 
