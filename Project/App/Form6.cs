@@ -67,6 +67,12 @@ namespace App
                 f.WriteLine(arr[i]);
                 //label3.Text = Convert.ToString(arr[i]);
             }
+            if (br > 0)
+            {
+                FileStream jebemVamMaterStoNeRaditeNistaSamRadimProjekat = File.Create("da.txt");
+
+                jebemVamMaterStoNeRaditeNistaSamRadimProjekat.Dispose();
+            }
             f.Dispose();
             this.Close();
         }

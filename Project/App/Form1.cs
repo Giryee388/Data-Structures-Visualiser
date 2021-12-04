@@ -131,7 +131,7 @@ namespace test
                 
             }
             if (stack) {
-                double razdaljina = 2 * zoom;
+                double razdaljina = 10 * zoom;
                 double visinaElementa = 50 * zoom;
                 double duzinaElementa = 150 * zoom;
                 double xOffsetOdD = 400 * zoom;
@@ -146,6 +146,7 @@ namespace test
                 parent.X = D.X - Convert.ToInt32(xOffsetOdD);
                 parent.Y = D.Y;
 
+                g.DrawLine(olovka, parent.X - Convert.ToInt32(razdaljina+olovka.Width/2), parent.Y + Convert.ToInt32(razdaljina + visinaElementa), parent.X + Convert.ToInt32(duzinaElementa + razdaljina+olovka.Width/2), parent.Y + Convert.ToInt32(razdaljina + visinaElementa));
                 _stek.drawingStack(stek,parent,duzinaElementa, visinaElementa, razdaljina);
             }
         }
@@ -203,6 +204,7 @@ namespace test
 
             _lista = new Lista(CreateGraphics(), this);
             _drvo = new Drvo(CreateGraphics(), this);
+            _stek = new Stek(CreateGraphics(), this);
 
             D.X = ClientRectangle.Width / 2 - 125;
             D.Y = ClientRectangle.Height / 2;
@@ -470,17 +472,22 @@ namespace test
             while (Application.OpenForms.Count > 1)
             {
             }
-            try
-            {
-                _stek.ucitajStekIzBaseFaila();
-                tree = false;
-                list = false;
-                red = false;
-                stack = true;
-            }
-            catch
-            {
-            }
+            //try
+            //{
+                if (File.Exists("da.txt"))
+                {
+                    File.Delete("da.txt");
+                    _stek.ucitajStekIzBaseFaila();
+                    tree = false;
+                    list = false;
+                    red = false;
+                    stack = true;
+                    Refresh();
+                }
+            //}
+            //catch
+            //{
+            //}
         }
         //Novi Graph
         private void button20_Click(object sender, EventArgs e)

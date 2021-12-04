@@ -48,19 +48,30 @@ namespace App
             Font drawFont = new Font("Arial", Convert.ToInt32(form1.zoom * 16));
             SolidBrush cetka = new SolidBrush(Color.Black);
             SolidBrush stringCetka = new SolidBrush(Color.White);
-            if (Stek.next.next == null)
+            if (Stek.next == null)
             {
                 return;
             }
                 W.X = Parent.X;
                 W.Y = Parent.Y;
-                g.DrawLine(ovloka, W.X+ Convert.ToInt32(duzinaElementa/2 + razdaljina), W.Y, W.X + Convert.ToInt32(duzinaElementa/2 + razdaljina), W.Y - Convert.ToInt32(duzinaElementa+2*razdaljina));
-                W.X = Parent.X;
-                g.DrawLine(ovloka, W.X - Convert.ToInt32(duzinaElementa / 2 + razdaljina), W.Y, W.X - Convert.ToInt32(duzinaElementa / 2 + razdaljina), W.Y - Convert.ToInt32(duzinaElementa+2*razdaljina));
+                
                 g.DrawRectangle(ovloka, W.X, W.Y, Convert.ToInt32(duzinaElementa), Convert.ToInt32(visinaElementa));
-                g.DrawString(Convert.ToString(Stek.next.next.value), drawFont, stringCetka, W.X, W.Y);
-                Parent.Y += Convert.ToInt32(2 * razdaljina);
-                drawingStack(Stek, Parent, duzinaElementa, visinaElementa, razdaljina);
+                g.FillRectangle(cetka, W.X, W.Y, Convert.ToInt32(duzinaElementa), Convert.ToInt32(visinaElementa));
+
+                W.X = Parent.X+Convert.ToInt32(razdaljina/2);
+                W.Y = Parent.Y + Convert.ToInt32(razdaljina / 2);
+                g.DrawString(Convert.ToString(Stek.next.value), drawFont, stringCetka, W.X, W.Y);
+
+                W.X=Parent.X-Convert.ToInt32(razdaljina);
+                W.Y = Parent.Y + Convert.ToInt32(visinaElementa+razdaljina);
+                g.DrawLine(ovloka,W.X,W.Y,W.X,W.Y-Convert.ToInt32(visinaElementa+2*razdaljina));
+
+                W.X=Parent.X+Convert.ToInt32(duzinaElementa+razdaljina);
+                W.Y = Parent.Y + Convert.ToInt32(visinaElementa+razdaljina);
+                g.DrawLine(ovloka,W.X,W.Y,W.X,W.Y-Convert.ToInt32(visinaElementa+2*razdaljina));
+
+                Parent.Y -= Convert.ToInt32((razdaljina)+visinaElementa);
+                drawingStack(Stek.next, Parent, duzinaElementa, visinaElementa, razdaljina);
         }
         public void ucitajStekIzBaseFaila()
         {
