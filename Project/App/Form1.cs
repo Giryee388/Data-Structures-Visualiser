@@ -360,6 +360,29 @@ namespace test
             }
         }
 
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            panelDropDown.Enabled = true;
+            panel19.BringToFront();
+
+            panel19.Size = panel19.MinimumSize;
+            isCollapsedSimulate = true;
+
+            pictureBox3.BringToFront();
+            pictureBox4.BringToFront();
+            pictureBox5.BringToFront();
+
+            panel19.Enabled = true;
+            panel19.BringToFront();
+
+            panelDropDown.Size = panelDropDown.MinimumSize;
+            isCollapsedFile = true;
+
+            pictureBox3.BringToFront();
+            pictureBox4.BringToFront();
+            pictureBox5.BringToFront();
+        }
+
         //minimize
         private void button6_Click(object sender, EventArgs e)
         {
@@ -696,6 +719,8 @@ namespace test
             f11.ShowDialog();
         }
         #endregion
+
+        
 
     }
 }

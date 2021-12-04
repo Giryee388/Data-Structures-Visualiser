@@ -165,10 +165,29 @@ namespace App
                 rasicuNaduvajMiSeSKuracOvajZabagreli.Dispose();
             }
             f.Close();
-            Form12 f12 = new Form12();
+            Form12 f12 = new Form12(br2);
             
             f12.ShowDialog();
             this.Close();
-        }     
+        }
+
+        private void textBox3_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+            {
+                int n;
+                bool isNumeric = int.TryParse(textBox3.Text, out n);
+                if (isNumeric)
+                {
+                    listBox2.Items.Add(textBox3.Text);
+                    textBox3.Text = "";
+                    br++;
+                }
+                else
+                {
+                    MessageBox.Show("Input must be type int", "Error");
+                }
+            }
+        }    
     }
 }

@@ -118,6 +118,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(190, 22);
             this.textBox3.TabIndex = 16;
+            this.textBox3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyUp);
             // 
             // listBox2
             // 
