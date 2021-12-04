@@ -35,11 +35,9 @@ namespace App
 
         private void Form5_Load(object sender, EventArgs e)
         {
-            timer1.Interval = 200;
-            timer1.Start();
-            if (File.Exists("Grafovi/trenutniGraf.txt"))
+            if (Directory.Exists("Grafovi/trenutniGraf"))
             {
-                File.Delete("Grafovi/trenutniGraf.txt");
+                Directory.Delete("Grafovi/trenutniGraf",true);
             }
         }
 
@@ -77,8 +75,8 @@ namespace App
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Directory.CreateDirectory("Grafovi");
-            string fileName = "Grafovi/trenutniGraf.txt";
+            Directory.CreateDirectory("Grafovi/trenutniGraf");
+            string fileName = "Grafovi/trenutniGraf/cvorovi.txt";
             FileStream fs = File.Create(fileName);
             StreamWriter f = new StreamWriter(fs);
             int n = Convert.ToInt32(listBox1.Items.Count.ToString());
@@ -95,6 +93,9 @@ namespace App
                 rasicuNaduvajMiSeSKuracOvajZabagreli.Dispose();
             }
             f.Dispose();
+            Form12 f12 = new Form12();
+            f12.Br = br;
+            f12.ShowDialog();
             this.Close();
         }
 
@@ -139,8 +140,8 @@ namespace App
 
         private void button7_Click(object sender, EventArgs e)
         {
-            Directory.CreateDirectory("Grafovi");
-            string fileName = "Grafovi/trenutniGraf.txt";
+            Directory.CreateDirectory("Grafovi/trenutniGraf");
+            string fileName = "Grafovi/trenutniGraf/cvorovi.txt";
             if (File.Exists(fileName))
             {
                 File.Delete(fileName);
@@ -149,7 +150,7 @@ namespace App
             {
 
             }
-            StreamWriter f = new StreamWriter("Grafovi/trenutniGraf.txt");
+            StreamWriter f = new StreamWriter("Grafovi/trenutniGraf/cvorovi.txt");
             int n = Convert.ToInt32(listBox2.Items.Count.ToString());
             object[] arr = new object[n];
             listBox2.Items.CopyTo(arr, 0);
@@ -165,9 +166,9 @@ namespace App
                 rasicuNaduvajMiSeSKuracOvajZabagreli.Dispose();
             }
             f.Close();
-            Form12 f12 = new Form12(br2);
-            
-            f12.ShowDialog();
+            Form13 f13 = new Form13();
+            f13.Br = br2;
+            f13.ShowDialog();
             this.Close();
         }
 

@@ -10,9 +10,9 @@ using System.IO;
 
 namespace App
 {
-    public partial class Form12 : Form
+    public partial class Form13 : Form
     {
-        public Form12()
+        public Form13()
         {
             InitializeComponent();
         }
@@ -21,16 +21,16 @@ namespace App
         {
             get { return br; }
             set { br = value; }
+
         }
         List<bool> left = new List<bool>();
         List<bool> right = new List<bool>();
         System.Windows.Forms.GroupBox gb1 = new System.Windows.Forms.GroupBox();
-        System.Windows.Forms.GroupBox gb2 = new System.Windows.Forms.GroupBox();  
-        private void Form12_Load(object sender, EventArgs e)
+        System.Windows.Forms.GroupBox gb2 = new System.Windows.Forms.GroupBox(); 
+        private void Form13_Load(object sender, EventArgs e)
         {
-
-            System.Windows.Forms.RadioButton[] btnArr = new System.Windows.Forms.RadioButton[2 * br];      
-            this.Size=new Size(320,206+21*br);
+            System.Windows.Forms.RadioButton[] btnArr = new System.Windows.Forms.RadioButton[2 * br];
+            this.Size = new Size(320, 250 + 21 * br);
             Controls.Add(gb1);
             Controls.Add(gb2);
             gb1.Location = new Point(10, 10);
@@ -41,6 +41,8 @@ namespace App
             gb2.Text = "Krajnja tacka";
             button1.Location = new Point(ClientRectangle.Width / 2 - button1.Width / 2, ClientRectangle.Height - 20 - button2.Height - button1.Height);
             button2.Location = new Point(ClientRectangle.Width / 2 - button2.Width / 2, ClientRectangle.Height - 10 - button1.Height);
+            textBox1.Location = new Point(ClientRectangle.Width / 2 - button1.Width / 2 + label1.Width + 5, ClientRectangle.Height - 30 - button2.Height - button1.Height - textBox1.Height);
+            label1.Location = new Point(ClientRectangle.Width / 2 - button2.Width / 2, ClientRectangle.Height - 30 - button2.Height - button1.Height - label1.Height);
             StreamReader f = new StreamReader("Grafovi/trenutniGraf/cvorovi.txt");
             for (int i = 0; i < 2 * br; i += 2)
             {
@@ -62,14 +64,9 @@ namespace App
                 btnArr[i].Location = new Point(5, 15 + (i - i / 2) * 21);
                 btnArr[i + 1].Location = new Point(gb2.Width - 10 - btnArr[i + 1].Width, 15 + (i - i / 2) * 21);
 
-                
+
             }
             f.Dispose();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }

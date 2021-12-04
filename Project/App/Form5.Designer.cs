@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -59,7 +57,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(235, 236);
+            this.button5.Location = new System.Drawing.Point(235, 235);
             this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(235, 28);
@@ -81,7 +79,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(20, 292);
+            this.button7.Location = new System.Drawing.Point(20, 295);
             this.button7.Margin = new System.Windows.Forms.Padding(4);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(449, 28);
@@ -175,7 +173,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 88);
+            this.label4.Location = new System.Drawing.Point(17, 87);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(416, 17);
@@ -216,7 +214,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(20, 290);
+            this.button2.Location = new System.Drawing.Point(20, 295);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(449, 28);
@@ -262,7 +260,7 @@
             this.textBox1.Location = new System.Drawing.Point(20, 167);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(191, 22);
+            this.textBox1.Size = new System.Drawing.Size(190, 22);
             this.textBox1.TabIndex = 1;
             this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
@@ -327,7 +325,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
