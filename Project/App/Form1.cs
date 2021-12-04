@@ -23,6 +23,7 @@ namespace test
 
         Drvo _drvo;
         Lista _lista;
+        Stek _stek;
 
         public Form1()
         {
@@ -51,6 +52,7 @@ namespace test
         public bool graph = false;
 
         public Element lista = new Element();
+        public Element stek = new Element();
         Node koren = new Node();
 
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -126,7 +128,25 @@ namespace test
                 parent.Y = D.Y;
                 _lista.drawingLista(lista, parent, duzinaSekcijeElementa, visinaSekcijeElementa, razdaljinaOdProslog, precnikKorena);
 
+                
+            }
+            if (stack) {
+                double razdaljina = 2 * zoom;
+                double visinaElementa = 50 * zoom;
+                double duzinaElementa = 150 * zoom;
+                double xOffsetOdD = 400 * zoom;
 
+                Graphics g = e.Graphics;
+                Font drawFont = new Font("Arial", Convert.ToInt32(zoom * 16));
+                SolidBrush cetka = new SolidBrush(Color.Black);
+                SolidBrush stringCetka = new SolidBrush(Color.White);
+                Pen olovka = new Pen(Color.DarkGray, Convert.ToInt32(zoom * 6));
+
+                Point parent = new Point();
+                parent.X = D.X - Convert.ToInt32(xOffsetOdD);
+                parent.Y = D.Y;
+
+                _stek.drawingStack(stek,parent,duzinaElementa, visinaElementa, razdaljina);
             }
         }
 
@@ -452,7 +472,7 @@ namespace test
             }
             try
             {
-
+                _stek.ucitajStekIzBaseFaila();
                 tree = false;
                 list = false;
                 red = false;

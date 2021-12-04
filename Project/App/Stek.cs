@@ -42,7 +42,7 @@ namespace App
             novi.next = null;
             return Stek;
         }
-        public void drawingStack(Element Stek, Point Parent,double duzinaElementa, double visinaElementa,double razdaljina){
+        public void drawingStack(Element Stek, Point Parent, double duzinaElementa, double visinaElementa,double razdaljina){
             Point W = new Point();
             Pen ovloka = new Pen(Color.DarkGray, Convert.ToInt32(form1.zoom * 6));
             Font drawFont = new Font("Arial", Convert.ToInt32(form1.zoom * 16));
@@ -65,13 +65,13 @@ namespace App
         public void ucitajStekIzBaseFaila()
         {
             StreamReader f = new StreamReader("Stekovi/trenutniStek.txt");
-            Element lista = new Element();
-            lista.next = null;
+            Element stek = new Element();
+            stek.next = null;
             string temp;
             while (!f.EndOfStream)
             {
                 temp = f.ReadLine();
-                //form1.Stek = dodajNaKraj(Stek, Convert.ToInt32(temp));
+                form1.stek = dodajNaKraj(stek, Convert.ToInt32(temp));
             }
 
         }
