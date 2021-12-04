@@ -52,12 +52,19 @@ namespace App
             SolidBrush stringCetka = new SolidBrush(Color.White);
             if (lista.next.value != null)
             {
-                W.Y = Parent.Y + Convert.ToInt32(precnikKorena)/2;
-                W.X = Parent.X + Convert.ToInt32(precnikKorena)/2;
+                if (lista.next == null)
+                {
+                    W.X = Parent.X + Convert.ToInt32(razdaljinaOdProslog) + Convert.ToInt32(precnikKorena);
+                    W.Y = Parent.Y + Convert.ToInt32((precnikKorena - visinaSekcijeElementa) / 2);
+                    W.X += Convert.ToInt32(duzinaSekcijeElementa);
+                    g.DrawString("NULL", drawFont, stringCetka, W.X, W.Y);
+                }
+                W.Y = Parent.Y + Convert.ToInt32(precnikKorena) / 2;
+                W.X = Parent.X + Convert.ToInt32(precnikKorena) / 2;
                 g.DrawLine(olovka, W.X, W.Y, W.X + Convert.ToInt32(razdaljinaOdProslog) + Convert.ToInt32(precnikKorena) / 2, W.Y);
 
                 W.X = Parent.X + Convert.ToInt32(razdaljinaOdProslog) + Convert.ToInt32(precnikKorena);
-                W.Y = Parent.Y + Convert.ToInt32((precnikKorena - visinaSekcijeElementa)/2);
+                W.Y = Parent.Y + Convert.ToInt32((precnikKorena - visinaSekcijeElementa) / 2);
 
                 g.FillRectangle(cetka, W.X, W.Y, Convert.ToInt32(duzinaSekcijeElementa), Convert.ToInt32(visinaSekcijeElementa));
                 g.DrawRectangle(olovka, W.X, W.Y, Convert.ToInt32(duzinaSekcijeElementa), Convert.ToInt32(visinaSekcijeElementa));
@@ -88,6 +95,10 @@ namespace App
             SolidBrush stringCetka = new SolidBrush(Color.White);
             if (lista.next.next == null)
             {
+                W.X = Parent.X - Convert.ToInt32(razdaljinaOdProslog) + Convert.ToInt32(visinaSekcijeElementa / 5);
+                W.Y = Parent.Y + Convert.ToInt32(visinaSekcijeElementa / 5);
+                W.X += Convert.ToInt32(duzinaSekcijeElementa);
+                g.DrawString("NULL", drawFont, stringCetka, W.X, W.Y);
                 return;
             }
             W.Y = Parent.Y + Convert.ToInt32(visinaSekcijeElementa) / 2;
@@ -111,6 +122,7 @@ namespace App
             g.FillRectangle(cetka, W.X, W.Y, Convert.ToInt32(duzinaSekcijeElementa), Convert.ToInt32(visinaSekcijeElementa));
             g.DrawRectangle(olovka, W.X, W.Y, Convert.ToInt32(duzinaSekcijeElementa), Convert.ToInt32(visinaSekcijeElementa));
             Parent.X += Convert.ToInt32(duzinaSekcijeElementa) + Convert.ToInt32(razdaljinaOdProslog) + Convert.ToInt32(razdaljinaOdProslog);
+            
 
             drawingListaBackend(lista.next, Parent, duzinaSekcijeElementa, visinaSekcijeElementa, razdaljinaOdProslog);
         }
