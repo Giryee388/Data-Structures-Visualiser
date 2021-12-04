@@ -30,8 +30,13 @@ namespace App
                 btnArr[i + 1] = new RadioButton();
                 btnArr[i].Location = new Point(5, 5 + (i - i / 2) * 21);
                 btnArr[i + 1].Location = new Point(ClientRectangle.Width - 5, 5 + (i - i / 2) * 21);
-                btnArr[i].Update();
-                btnArr[i + 1].Update();
+                btnArr[i].Visible = true;
+                btnArr[i + 1].Visible = true;
+                Controls.Add(btnArr[i]);
+                Controls.Add(btnArr[i + 1]);
+                //button1.Location = new Point(ClientRectangle.Width / 2 - button1.Width, ClientRectangle.Height - 10 - button2.Height-button1.Height);
+                //button2.Location = new Point(ClientRectangle.Width / 2 - button2.Width, ClientRectangle.Height - 10 - button1.Height - button2.Height);
+
             }
         }
     }
