@@ -23,10 +23,10 @@ namespace App
             set { br = value; }
 
         }
-        List<bool> left = new List<bool>();
-        List<bool> right = new List<bool>();
         System.Windows.Forms.GroupBox gb1 = new System.Windows.Forms.GroupBox();
-        System.Windows.Forms.GroupBox gb2 = new System.Windows.Forms.GroupBox(); 
+        System.Windows.Forms.GroupBox gb2 = new System.Windows.Forms.GroupBox();
+        int broj;
+        List<System.Windows.Forms.RadioButton> btnLst = new List<System.Windows.Forms.RadioButton>();
         private void Form13_Load(object sender, EventArgs e)
         {
             System.Windows.Forms.RadioButton[] btnArr = new System.Windows.Forms.RadioButton[2 * br];
@@ -64,9 +64,18 @@ namespace App
                 btnArr[i].Location = new Point(5, 15 + (i - i / 2) * 21);
                 btnArr[i + 1].Location = new Point(gb2.Width - 10 - btnArr[i + 1].Width, 15 + (i - i / 2) * 21);
 
-
+                btnLst.Add(btnArr[i]);
+                btnLst.Add(btnArr[i + 1]);
             }
             f.Dispose();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.RadioButton[] btnArr = new System.Windows.Forms.RadioButton[2 * broj];
+            btnLst.CopyTo(btnArr);
+
+
         }
     }
 }
