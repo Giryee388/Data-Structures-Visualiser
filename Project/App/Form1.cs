@@ -25,6 +25,7 @@ namespace test
         Lista _lista;
         Stek _stek;
         Red _red;
+        Graf _graf;
 
         public Form1()
         {
@@ -56,6 +57,8 @@ namespace test
         public Element stek = new Element();
         public Element red = new Element();
         Node koren = new Node();
+        public ListaCvorova graf = new ListaCvorova();
+        int brojCvorovaGrafa;
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
@@ -166,6 +169,21 @@ namespace test
                 parent.Y = D.Y;
                 _red.drawingRed(stek, parent, duzinaElementa, visinaElementa, razdaljina);*/
                 }
+            if (graph)
+            {
+                double stranica = 225 * zoom;
+                double polOpisanog = (stranica / 2) / (Math.Sin(Math.PI / brojCvorovaGrafa));
+                double precnikCvora = 50 * zoom;
+
+                Graphics g = e.Graphics;
+                Font drawFont = new Font("Arial", Convert.ToInt32(zoom * 16));
+                SolidBrush cetka = new SolidBrush(Color.Black);
+                SolidBrush stringCetka = new SolidBrush(Color.White);
+                Pen olovka = new Pen(Color.DarkGray, Convert.ToInt32(zoom * 6));
+
+                _graf.drawingGraf(graf, stranica, polOpisanog, precnikCvora, D, olovka, drawFont, cetka, stringCetka);
+
+            }
         }
 
         #region Pomeranje
@@ -223,6 +241,7 @@ namespace test
             _drvo = new Drvo(CreateGraphics(), this);
             _stek = new Stek(CreateGraphics(), this);
             _red = new Red(CreateGraphics(), this);
+            _graf = new Graf(CreateGraphics(), this);
 
             D.X = ClientRectangle.Width / 2 - 125;
             D.Y = ClientRectangle.Height / 2;
@@ -512,7 +531,7 @@ namespace test
         {
             Form5 f5 = new Form5();
             f5.ShowDialog();
-            /*while (Application.OpenForms.Count > 1)
+            while (Application.OpenForms.Count > 1)
             {
             }
             //try
@@ -520,10 +539,10 @@ namespace test
             if (File.Exists("da.txt"))
             {
                 File.Delete("da.txt");
-                _graf.ucitajGrafIzBaseFaila();
+                brojCvorovaGrafa=_graf.ucitajGrafIzBaseFaila();
                 tree = false;
                 list = false;
-                red = false;
+                queue = false;
                 stack = false;
                 graph = true;
                 Refresh();
@@ -531,7 +550,7 @@ namespace test
             //}
             //catch
             //{
-            //}*/
+            //}
         }
         #endregion
         #region Funkcije za drvo

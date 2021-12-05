@@ -39,6 +39,7 @@ namespace App
             gb2.Size = new Size(120, 20 + br * 21);
             gb1.Text = "Polazna tacka";
             gb2.Text = "Krajnja tacka";
+            broj = 2 * br;
             button1.Location = new Point(ClientRectangle.Width / 2 - button1.Width / 2, ClientRectangle.Height - 20 - button2.Height - button1.Height);
             button2.Location = new Point(ClientRectangle.Width / 2 - button2.Width / 2, ClientRectangle.Height - 10 - button1.Height);
             textBox1.Location = new Point(ClientRectangle.Width / 2 - button1.Width / 2 + label1.Width + 5, ClientRectangle.Height - 30 - button2.Height - button1.Height - textBox1.Height);
@@ -72,10 +73,32 @@ namespace App
 
         private void button1_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.RadioButton[] btnArr = new System.Windows.Forms.RadioButton[2 * broj];
+            System.Windows.Forms.RadioButton[] btnArr = new System.Windows.Forms.RadioButton[broj];
             btnLst.CopyTo(btnArr);
+            for (int i = 0; i < broj; i += 2)
+            {
+                if (btnArr[i].Checked)
+                {
+                    FileStream fs = File.Create("Grafovi/trenutniGraf/" + btnArr[i].Text + ".txt");
+                    fs.Dispose();
+                    for (int j = 1; j <= broj - 1; j += 2)
+                    {
+                        if (btnArr[j].Checked)
+                        {
+                            StreamWriter f = new StreamWriter("Grafovi/trenutniGraf/" + btnArr[i].Text + ".txt");
+                            f.WriteLine(btnArr[j].Text);
+                            f.WriteLine(textBox1.Text);
+                            f.Dispose();
+                        }
+                    }
+                }
+            }
 
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -40,6 +40,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Generisi graf";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 

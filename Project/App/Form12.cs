@@ -72,9 +72,31 @@ namespace App
 
         private void button1_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.RadioButton[] btnArr = new System.Windows.Forms.RadioButton[2 * broj];
+            System.Windows.Forms.RadioButton[] btnArr = new System.Windows.Forms.RadioButton[broj];
             btnLst.CopyTo(btnArr);
+            for (int i = 0; i < broj; i+=2)
+            {
+                if (btnArr[i].Checked)
+                {
+                    FileStream fs = File.Create("Grafovi/trenutniGraf/"+btnArr[i].Text+".txt");
+                    fs.Dispose();
+                    for (int j = 1; j <= broj - 1; j += 2)
+                    {
+                        if (btnArr[j].Checked)
+                        {
+                            StreamWriter f = new StreamWriter("Grafovi/trenutniGraf/" + btnArr[i].Text + ".txt");
+                            f.WriteLine(btnArr[j].Text);
+                            f.Dispose();
+                        }
+                    }
+                }
+            }
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
