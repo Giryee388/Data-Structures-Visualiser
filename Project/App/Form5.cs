@@ -142,32 +142,24 @@ namespace App
         {
             Directory.CreateDirectory("Grafovi/trenutniGraf");
             string fileName = "Grafovi/trenutniGraf/cvorovi.txt";
-            if (File.Exists(fileName))
-            {
-                File.Delete(fileName);
-            }
-            using (FileStream fs = File.Create(fileName))
-            {
-
-            }
-            StreamWriter f = new StreamWriter("Grafovi/trenutniGraf/cvorovi.txt");
+            FileStream fs = File.Create(fileName);
+            StreamWriter f = new StreamWriter(fs);
             int n = Convert.ToInt32(listBox2.Items.Count.ToString());
             object[] arr = new object[n];
             listBox2.Items.CopyTo(arr, 0);
             for (int i = 0; i < n; i++)
             {
                 f.WriteLine(arr[i]);
-                //label3.Text = Convert.ToString(arr[i]);
             }
-            if (br2 > 0)
+            if (br > 0)
             {
                 FileStream rasicuNaduvajMiSeSKuracOvajZabagreli = File.Create("da.txt");
 
                 rasicuNaduvajMiSeSKuracOvajZabagreli.Dispose();
             }
-            f.Close();
+            f.Dispose();
             Form13 f13 = new Form13();
-            f13.Br = br2;
+            f13.Br = br;
             f13.ShowDialog();
             this.Close();
         }
