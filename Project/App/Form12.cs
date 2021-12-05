@@ -25,7 +25,7 @@ namespace App
         List<bool> left = new List<bool>();
         List<bool> right = new List<bool>();
         System.Windows.Forms.GroupBox gb1 = new System.Windows.Forms.GroupBox();
-        System.Windows.Forms.GroupBox gb2 = new System.Windows.Forms.GroupBox();  
+        System.Windows.Forms.GroupBox gb2 = new System.Windows.Forms.GroupBox();
         private void Form12_Load(object sender, EventArgs e)
         {
 
