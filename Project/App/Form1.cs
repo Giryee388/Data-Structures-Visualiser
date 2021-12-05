@@ -24,6 +24,7 @@ namespace test
         Drvo _drvo;
         Lista _lista;
         Stek _stek;
+        Red _red;
 
         public Form1()
         {
@@ -47,12 +48,13 @@ namespace test
         //Za sta se trenutno koristi program
         public bool tree = false;
         public bool list = false;
-        public bool red = false;
+        public bool queue = false;
         public bool stack = false;
         public bool graph = false;
 
         public Element lista = new Element();
         public Element stek = new Element();
+        public Element red = new Element();
         Node koren = new Node();
 
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -148,7 +150,22 @@ namespace test
 
                 g.DrawLine(olovka, parent.X - Convert.ToInt32(razdaljina+olovka.Width/2), parent.Y + Convert.ToInt32(razdaljina + visinaElementa), parent.X + Convert.ToInt32(duzinaElementa + razdaljina+olovka.Width/2), parent.Y + Convert.ToInt32(razdaljina + visinaElementa));
                 _stek.drawingStack(stek,parent,duzinaElementa, visinaElementa, razdaljina);
-            }
+                /*double razdaljina = 25 * zoom;
+                double visinaElementa = 50 * zoom;
+                double duzinaElementa = 150 * zoom;
+                double xOffsetOdD = 400 * zoom;
+
+                Graphics g = e.Graphics;
+                Font drawFont = new Font("Arial", Convert.ToInt32(zoom * 16));
+                SolidBrush cetka = new SolidBrush(Color.Black);                     za
+                SolidBrush stringCetka = new SolidBrush(Color.White);               red
+                Pen olovka = new Pen(Color.DarkGray, Convert.ToInt32(zoom * 6));
+
+                Point parent = new Point();
+                parent.X = D.X - Convert.ToInt32(xOffsetOdD);
+                parent.Y = D.Y;
+                _red.drawingRed(stek, parent, duzinaElementa, visinaElementa, razdaljina);*/
+                }
         }
 
         #region Pomeranje
@@ -205,6 +222,7 @@ namespace test
             _lista = new Lista(CreateGraphics(), this);
             _drvo = new Drvo(CreateGraphics(), this);
             _stek = new Stek(CreateGraphics(), this);
+            _red = new Red(CreateGraphics(), this);
 
             D.X = ClientRectangle.Width / 2 - 125;
             D.Y = ClientRectangle.Height / 2;
@@ -281,7 +299,7 @@ namespace test
                     File.Delete("da.txt");
                     _drvo.ucitajDrvoIzBaseFaila();
                     tree = true;
-                    red = false;
+                    queue = false;
                     stack = false;
                     list = false;
                     Refresh();
@@ -308,7 +326,7 @@ namespace test
                 _lista.ucitajListuIzBaseFaila();
                 tree = false;
                 list = true;
-                red = false;
+                queue = false;
                 stack = false;
                 Refresh();
             }
@@ -480,7 +498,7 @@ namespace test
                     _stek.ucitajStekIzBaseFaila();
                     tree = false;
                     list = false;
-                    red = false;
+                    queue = false;
                     stack = true;
                     Refresh();
                 }

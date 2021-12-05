@@ -1,6 +1,6 @@
 ﻿namespace App
 {
-    partial class Form6
+    partial class Form14
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.label16 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -38,10 +39,21 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage5.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.MaximumSize = new System.Drawing.Size(569, 295);
+            this.tabControl1.MinimumSize = new System.Drawing.Size(569, 295);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(569, 295);
+            this.tabControl1.TabIndex = 12;
             // 
             // tabPage5
             // 
@@ -67,9 +79,9 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(12, 77);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(246, 13);
+            this.label16.Size = new System.Drawing.Size(241, 13);
             this.label16.TabIndex = 19;
-            this.label16.Text = "Prilikom unosa steka raspored elemenata je poznat";
+            this.label16.Text = "Prilikom unosa reda raspored elemenata je poznat";
             // 
             // button2
             // 
@@ -77,9 +89,8 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(337, 23);
             this.button2.TabIndex = 18;
-            this.button2.Text = "Generisi stek";
+            this.button2.Text = "Generisi red";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button4
             // 
@@ -141,45 +152,32 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(328, 45);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Stek (Stack) je apstraktni tip podataka kao i jedan od načina na koji možemo da s" +
-    "kladištimo i organizujemo podatke u računaru.\r\nRadi po principu LIFO (Last in fi" +
+            this.label1.Text = "Red (Queue) je apstraktni tip podataka kao i jedan od načina na koji možemo da sk" +
+    "ladištimo i organizujemo podatke u računaru.\r\nRadi po principu FIFO (First in fi" +
     "rst out).";
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.MaximumSize = new System.Drawing.Size(569, 295);
-            this.tabControl1.MinimumSize = new System.Drawing.Size(569, 295);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(569, 295);
-            this.tabControl1.TabIndex = 11;
-            // 
-            // Form6
+            // Form14
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(562, 292);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Form6";
-            this.Text = "Novi stek";
-            this.Load += new System.EventHandler(this.Form6_Load);
+            this.Name = "Form14";
+            this.Text = "Novi Red";
+            this.Load += new System.EventHandler(this.Red_Load);
+            this.tabControl1.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
@@ -188,8 +186,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.Label label16;
 
     }
 }

@@ -6,22 +6,35 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.IO; 
+using System.IO;
 
-namespace test
+namespace App
 {
-    public partial class Form3 : Form
+    public partial class Form14 : Form
     {
-        public Form3()
+        public Form14()
         {
             InitializeComponent();
         }
-        int br = 0, br2 = 0;
-        private void Form3_Load(object sender, EventArgs e)
+
+        int br = 0;
+
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
         {
-            if (File.Exists("Liste/trenutnaLista.txt"))
+            if (e.KeyValue == 13)
             {
-                File.Delete("Liste/trenutnaLista.txt");
+                int n;
+                bool isNumeric = int.TryParse(textBox1.Text, out n);
+                if (isNumeric)
+                {
+                    listBox1.Items.Add(textBox1.Text);
+                    textBox1.Text = "";
+                    br++;
+                }
+                else
+                {
+                    MessageBox.Show("Input must be type int", "Error");
+                }
             }
         }
 
@@ -61,8 +74,8 @@ namespace test
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Directory.CreateDirectory("Liste");
-            string fileName = "Liste/trenutnaLista.txt";
+            Directory.CreateDirectory("Redovi");
+            string fileName = "Redovi/TrenutniRed";
             FileStream fs = File.Create(fileName);
             StreamWriter f = new StreamWriter(fs);
             int n = Convert.ToInt32(listBox1.Items.Count.ToString());
@@ -82,22 +95,12 @@ namespace test
             f.Dispose();
             this.Close();
         }
-        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+
+        private void Red_Load(object sender, EventArgs e)
         {
-            if (e.KeyValue == 13)
+            if (File.Exists("Redovi/TrenutniRed.txt"))
             {
-                int n;
-                bool isNumeric = int.TryParse(textBox1.Text, out n);
-                if (isNumeric)
-                {
-                    listBox1.Items.Add(textBox1.Text);
-                    textBox1.Text = "";
-                    br++;
-                }
-                else
-                {
-                    MessageBox.Show("Input must be type int", "Error");
-                }
+                File.Delete("Redovi/TrenutniRed.txt");
             }
         }
     }

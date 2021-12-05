@@ -22,17 +22,35 @@ namespace App
         {
             if (e.KeyValue == 13)
             {
-                listBox1.Items.Add(textBox1.Text);
-                textBox1.Text = "";
-                br++;
+                int n;
+                bool isNumeric = int.TryParse(textBox1.Text, out n);
+                if (isNumeric)
+                {
+                    listBox1.Items.Add(textBox1.Text);
+                    textBox1.Text = "";
+                    br++;
+                }
+                else
+                {
+                    MessageBox.Show("Input must be type int", "Error");
+                }
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(textBox1.Text);
-            textBox1.Text = "";
-            br++;
+            int n;
+            bool isNumeric = int.TryParse(textBox1.Text, out n);
+            if (isNumeric)
+            {
+                listBox1.Items.Add(textBox1.Text);
+                textBox1.Text = "";
+                br++;
+            }
+            else
+            {
+                MessageBox.Show("Input must be type int", "Error");
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -79,8 +97,6 @@ namespace App
 
         private void Form6_Load(object sender, EventArgs e)
         {
-            timer1.Interval = 200;
-            timer1.Start();
             if (File.Exists("Stekovi/TrenutniStek.txt"))
             {
                 File.Delete("Stekovi/TrenutniStek.txt");
