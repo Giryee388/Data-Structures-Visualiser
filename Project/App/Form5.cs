@@ -23,9 +23,22 @@ namespace App
             bool isNumeric = int.TryParse(textBox1.Text, out n);
             if (isNumeric)
             {
+                n = Convert.ToInt32(listBox1.Items.Count.ToString());
+                object[] arr = new object[n];
+                listBox1.Items.CopyTo(arr, 0);
+                for (int i = 0; i < n; i++)
+                {
+                    if (Convert.ToInt32(arr[i]) == Convert.ToInt32(textBox1.Text))
+                    {
+                        MessageBox.Show("You already have that element!", "Error");
+                        return;
+                    }
+                }
                 listBox1.Items.Add(textBox1.Text);
                 textBox1.Text = "";
                 br++;
+                
+
             }
             else
             {
@@ -49,6 +62,17 @@ namespace App
                 bool isNumeric = int.TryParse(textBox1.Text, out n);
                 if (isNumeric)
                 {
+                    n = Convert.ToInt32(listBox1.Items.Count.ToString());
+                    object[] arr = new object[n];
+                    listBox1.Items.CopyTo(arr, 0);
+                    for (int i = 0; i < n; i++)
+                    {
+                        if (Convert.ToInt32(arr[i]) == Convert.ToInt32(textBox1.Text))
+                        {
+                            MessageBox.Show("You already have that element!", "Error");
+                            return;
+                        }
+                    }
                     listBox1.Items.Add(textBox1.Text);
                     textBox1.Text = "";
                     br++;
@@ -110,6 +134,17 @@ namespace App
             bool isNumeric = int.TryParse(textBox1.Text, out n);
             if (isNumeric)
             {
+                n = Convert.ToInt32(listBox1.Items.Count.ToString());
+                object[] arr = new object[n];
+                listBox1.Items.CopyTo(arr, 0);
+                for (int i = 0; i < n; i++)
+                {
+                    if (Convert.ToInt32(arr[i]) == Convert.ToInt32(textBox1.Text))
+                    {
+                        MessageBox.Show("You already have that element!", "Error");
+                        return;
+                    }
+                }
                 listBox2.Items.Add(textBox3.Text);
                 textBox3.Text = "";
                 br2++;
@@ -172,6 +207,17 @@ namespace App
                 bool isNumeric = int.TryParse(textBox3.Text, out n);
                 if (isNumeric)
                 {
+                    n = Convert.ToInt32(listBox1.Items.Count.ToString());
+                    object[] arr = new object[n];
+                    listBox1.Items.CopyTo(arr, 0);
+                    for (int i = 0; i < n; i++)
+                    {
+                        if (Convert.ToInt32(arr[i]) == Convert.ToInt32(textBox1.Text))
+                        {
+                            MessageBox.Show("You already have that element!", "Error");
+                            return;
+                        }
+                    }
                     listBox2.Items.Add(textBox3.Text);
                     textBox3.Text = "";
                     br++;
@@ -181,6 +227,7 @@ namespace App
                     MessageBox.Show("Input must be type int", "Error");
                 }
             }
-        }    
+        }
+   
     }
 }

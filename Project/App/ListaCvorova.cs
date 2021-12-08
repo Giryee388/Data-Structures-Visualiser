@@ -12,5 +12,6 @@ namespace App
         public int? vrednost { get; set; }
         public ListaCvorova sledeci { get; set; }
         public ListaVeza veze { get; set; }
+        public Point koordinate { get; set; }
     }
 }

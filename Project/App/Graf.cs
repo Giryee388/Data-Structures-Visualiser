@@ -44,7 +44,7 @@ namespace App
 
                             while (!v.EndOfStream)
                             {
-                                form1.graf.veze.value = Convert.ToInt32(v.ReadLine());
+                                form1.graf.veze.veza = dajMiPokazivac(Convert.ToInt32(v.ReadLine()), form1.graf);
                                 form1.graf.veze = form1.graf.veze.sledeci;
                             }
                             v.Dispose();
@@ -63,29 +63,47 @@ namespace App
                 return 0;
             }
         }
+        public ListaCvorova dajMiPokazivac(int imeCvora, ListaCvorova cvorovi)
+        {
+            while(cvorovi!=null)
+            {
+                if (cvorovi.vrednost == imeCvora)
+                {
+                    return cvorovi;
+                }
+                cvorovi = cvorovi.sledeci;
+            }
+            return cvorovi;
+        }
         public void drawingGraf(ListaCvorova graf, double n, double polOpisanog, double precnikCvora, Point centar, Pen olovka, Font drawFont, SolidBrush cetka, SolidBrush stringCetka)
         {
 
-            Point[] nizCvorova = new Point[Convert.ToInt32(n)];
-            for (int i = 0; i < n; i++)
-            {
-                nizCvorova[i] = new Point(Convert.ToInt32(centar.X + polOpisanog * Math.Cos(2 * Math.PI * i / n)), Convert.ToInt32(centar.Y + polOpisanog * Math.Sin(2 * Math.PI * i / n)));
-            }
+            //Point[] nizCvorova = new Point[Convert.ToInt32(n)];
             ListaCvorova tempGraf = graf;
+            for (int i = 1; i < n+1; i++)
+            {
+                tempGraf.koordinate = new Point(Convert.ToInt32(centar.X + polOpisanog * Math.Cos(2 * Math.PI * i / n)), Convert.ToInt32(centar.Y + polOpisanog * Math.Sin(2 * Math.PI * i / n)));
+            }
+            
             for (int i = 0; i < n; i++)
             {
-                ListaVeza tempVeze = graf.veze;
-                for (int j = 0; j < n; j++)
+                //ListaVeza tempVeze = graf.veze;
+                while(tempGraf.veze!=null)
                 {
+                    g.DrawLine(olovka, tempGraf.koordinate, tempGraf.veze.veza.koordinate);
+                    tempGraf.veze = tempGraf.veze.sledeci;
                 }
                 tempGraf = tempGraf.sledeci;
             }
+            tempGraf = graf;
             for (int i = 0; i < n; i++)
             {
-                g.FillEllipse(cetka, Convert.ToInt32(nizCvorova[i].X - precnikCvora / 2), Convert.ToInt32(nizCvorova[i].Y - precnikCvora / 2), Convert.ToInt32(precnikCvora), Convert.ToInt32(precnikCvora));
-                g.DrawEllipse(olovka, Convert.ToInt32(nizCvorova[i].X - precnikCvora / 2), Convert.ToInt32(nizCvorova[i].Y - precnikCvora / 2), Convert.ToInt32(precnikCvora), Convert.ToInt32(precnikCvora));
-                g.DrawString(graf.vrednost.ToString(), drawFont, stringCetka, Convert.ToInt32(nizCvorova[i].X - precnikCvora / 2 - 5), Convert.ToInt32(nizCvorova[i].Y - precnikCvora / 2 - 5));
+                g.FillEllipse(cetka, Convert.ToInt32(tempGraf.koordinate.X - precnikCvora / 2), Convert.ToInt32(tempGraf.koordinate.Y - precnikCvora / 2), Convert.ToInt32(precnikCvora), Convert.ToInt32(precnikCvora));
+                g.DrawEllipse(olovka, Convert.ToInt32(tempGraf.koordinate.X - precnikCvora / 2), Convert.ToInt32(tempGraf.koordinate.Y - precnikCvora / 2), Convert.ToInt32(precnikCvora), Convert.ToInt32(precnikCvora));
+                g.DrawString(graf.vrednost.ToString(), drawFont, stringCetka, Convert.ToInt32(tempGraf.koordinate.X - precnikCvora / 2 - 5), Convert.ToInt32(tempGraf.koordinate.Y - precnikCvora / 2 - 5));
+                tempGraf = tempGraf.sledeci;
             }
         }
+
     }
 }

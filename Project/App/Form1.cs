@@ -172,7 +172,7 @@ namespace test
             if (graph)
             {
                 double stranica = 225 * zoom;
-                double polOpisanog = (stranica / 2) / (Math.Sin(Math.PI / brojCvorovaGrafa));
+                double polOpisanog = (stranica / 2) / (Math.Cos(Math.PI / brojCvorovaGrafa));
                 double precnikCvora = 50 * zoom;
 
                 Graphics g = e.Graphics;
