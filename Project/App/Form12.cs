@@ -49,7 +49,8 @@ namespace App
 
             button1.Location = new Point(ClientRectangle.Width / 2 - button1.Width / 2, ClientRectangle.Height - 20 - button2.Height - button1.Height- 22 );
             button2.Location = new Point(ClientRectangle.Width / 2 - button2.Width / 2, ClientRectangle.Height - 10 - button1.Height -22 );
-            button3.Location = new Point(ClientRectangle.Width / 2 - button2.Width / 2, 12);
+            button3.Location = new Point(ClientRectangle.Width / 2 - button2.Width - 2, 12);
+            button4.Location = new Point(ClientRectangle.Width / 2 + 2, 12);
             button1.Enabled = false;
             button2.Enabled = false;
         }
@@ -81,28 +82,32 @@ namespace App
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            RadioButton levi = new RadioButton();
-            RadioButton desni = new RadioButton();
+            RadioButton levii = new RadioButton();
+            RadioButton desnii = new RadioButton();
             foreach (RadioButton i in btnLstLevi)
             {
                 if (i.Checked == true)
                 {
-                    levi = i;
+                    levii = i;
+                    levi = new Point(i.Location.X + i.Size.Width, i.Location.Y + i.Size.Height / 2);
                 }
             }
             foreach (RadioButton i in btnLstDesni)
             {
                 if (i.Checked == true)
                 {
-                    desni = i;
+                    desnii = i;
+                    desni = new Point(i.Location.X, i.Location.Y + i.Size.Height / 2);
                 }
             }
+            Graphics g = CreateGraphics();
+            g.DrawLine(Pens.Black, levi, desni);
 
-            FileStream fs = File.Create("Grafovi/trenutniGraf/" + levi.Text + ".txt");
+            FileStream fs = File.Create("Grafovi/trenutniGraf/" + levii.Text + ".txt");
             fs.Dispose();
 
-            StreamWriter f = new StreamWriter("Grafovi/trenutniGraf/" + levi.Text + ".txt");
-            f.WriteLine(desni.Text);
+            StreamWriter f = new StreamWriter("Grafovi/trenutniGraf/" + levii.Text + ".txt");
+            f.WriteLine(desnii.Text);
             f.Dispose();
         }
 
@@ -171,6 +176,39 @@ namespace App
         protected void desni_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (broj == 0)
+            {
+
+            }
+            else
+            {
+                Controls.Remove(btnLstLevi[btnLstLevi.Count - 1]);
+                Controls.Remove(btnLstDesni[btnLstDesni.Count - 1]);
+
+                tabPage1.Controls.Remove(btnLstLevi[btnLstLevi.Count - 1]);
+                tabPage1.Controls.Remove(btnLstDesni[btnLstDesni.Count - 1]);
+
+                gb1.Controls.Remove(btnLstLevi[btnLstLevi.Count - 1]);
+                gb1.Controls.Remove(btnLstDesni[btnLstDesni.Count - 1]);
+
+                btnLstDesni.RemoveAt(btnLstDesni.Count-1);
+                btnLstLevi.RemoveAt(btnLstLevi.Count - 1);
+                
+                broj--;
+
+                gb2.Size = new Size(120, 20 + broj * 21);
+                gb1.Size = new Size(120, 20 + broj * 21);
+
+                this.Size = new Size(320, 250 + 21 * broj);
+                tabControl1.Size = this.Size;
+                button1.Location = new Point(ClientRectangle.Width / 2 - button1.Width / 2, ClientRectangle.Height - 20 - button2.Height - button1.Height - 22);
+                button2.Location = new Point(ClientRectangle.Width / 2 - button2.Width / 2, ClientRectangle.Height - 10 - button1.Height - 22);
+                
+            }
         }
     }
 }
