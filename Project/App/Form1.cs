@@ -248,25 +248,15 @@ namespace test
 
             Point A = new Point(0, 60);
 
-            button1.Text = "Kreiraj novo drvo";
-            button4.Text = "Kreuraj novu listu";
-            button5.Text = "Simuliraj sortiranje";
-            button12.Text = "Kreiraj novi stack";
-            button20.Text = "Kreiraj novi graf";
-
-            textBox1.Size = new Size(190, 60);
-            textBox1.Enabled = false;
-            textBox1.Text = Convert.ToString(zoom);
-
             timer1.Interval = 17;
             timer1.Start();
         }
         #endregion
         #region Zoom
-        private void button2_Click(object sender, EventArgs e)
+        /*private void button2_Click(object sender, EventArgs e)
         {
             zoom += 0.1;
-            textBox1.Text = Convert.ToString(zoom);
+            //textBox1.Text = Convert.ToString(zoom);
             Refresh();
         }
         private void button3_Click(object sender, EventArgs e)
@@ -276,16 +266,17 @@ namespace test
             if (zoom != 0.1)
             {
                 zoom -= 0.1;
-                textBox1.Text = Convert.ToString(zoom);
+                //textBox1.Text = Convert.ToString(zoom);
                 Refresh();
             }
         }
+        */
         void Form1_MouseWheel(object sender, MouseEventArgs e)
         {
             if (e.Delta > 0)
             {
                 zoom += 0.2;
-                textBox1.Text = Convert.ToString(zoom);
+                //textBox1.Text = Convert.ToString(zoom);
                 Refresh();
             }
             if (e.Delta < 0)
@@ -295,42 +286,15 @@ namespace test
                 if (zoom != 0.2)
                 {
                     zoom -= 0.2;
-                    textBox1.Text = Convert.ToString(zoom);
+                    //textBox1.Text = Convert.ToString(zoom);
                     Refresh();
                 }
             }
         }
 
         #endregion
-        #region Dugmici Gornji toolbar
-        //Novo Drvo
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Form2 f2 = new Form2();
-            f2.ShowDialog();
-            while (Application.OpenForms.Count > 1)
-            {
-            }
-            try
-            {
-                if (File.Exists("da.txt"))
-                {
-                    File.Delete("da.txt");
-                    _drvo.ucitajDrvoIzBaseFaila();
-                    tree = true;
-                    queue = false;
-                    stack = false;
-                    list = false;
-                    Refresh();
-                }
-            }
-            catch
-            {
-            }
-        }
-
-        //Nova Lista
-        private void button4_Click(object sender, EventArgs e)
+        #region Dugmici Gornji Menubar
+        private void ListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form3 f3 = new Form3();
             f3.ShowDialog();
@@ -355,154 +319,7 @@ namespace test
             //}
         }
 
-        //Sortiranje
-        private void button5_Click(object sender, EventArgs e)
-        {
-            Form4 f4 = new Form4();
-            f4.ShowDialog();
-        }
-
-        private void button10_Click(object sender, EventArgs e)
-        {
-            if (isCollapsedFile)
-            {
-                panel19.Enabled = false;
-                panelDropDown.BringToFront();
-
-                panelDropDown.Size = panelDropDown.MaximumSize;
-                isCollapsedFile = false;
-
-                pictureBox3.BringToFront();
-                pictureBox4.BringToFront();
-                pictureBox5.BringToFront();
-            }
-            else
-            {
-                panel19.Enabled = true;
-                panel19.BringToFront();
-
-                panelDropDown.Size = panelDropDown.MinimumSize;
-                isCollapsedFile = true;
-
-                pictureBox3.BringToFront();
-                pictureBox4.BringToFront();
-                pictureBox5.BringToFront();
-            }
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            if (isCollapsedSimulate)
-            {
-                panelDropDown.Enabled = false;
-                panel19.BringToFront();
-
-                panel19.Size = panel19.MaximumSize;
-                isCollapsedSimulate = false;
-
-                pictureBox3.BringToFront();
-                pictureBox4.BringToFront();
-                pictureBox5.BringToFront();
-            }
-            else
-            {
-
-                panelDropDown.Enabled = true;
-                panel19.BringToFront();
-
-                panel19.Size = panel19.MinimumSize;
-                isCollapsedSimulate = true;
-
-                pictureBox3.BringToFront();
-                pictureBox4.BringToFront();
-                pictureBox5.BringToFront();
-            }
-        }
-
-        private void Form1_MouseClick(object sender, MouseEventArgs e)
-        {
-            panelDropDown.Enabled = true;
-            panel19.BringToFront();
-
-            panel19.Size = panel19.MinimumSize;
-            isCollapsedSimulate = true;
-
-            pictureBox3.BringToFront();
-            pictureBox4.BringToFront();
-            pictureBox5.BringToFront();
-
-            panel19.Enabled = true;
-            panel19.BringToFront();
-
-            panelDropDown.Size = panelDropDown.MinimumSize;
-            isCollapsedFile = true;
-
-            pictureBox3.BringToFront();
-            pictureBox4.BringToFront();
-            pictureBox5.BringToFront();
-        }
-
-        //minimize
-        private void button6_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
-        }
-
-        //maximize
-        private void button7_Click(object sender, EventArgs e)
-        {
-            if (isMaximized == true)
-            {
-                isMaximized = false;
-                WindowState = FormWindowState.Normal;
-            }
-            else
-            {
-                isMaximized = true;
-                WindowState = FormWindowState.Maximized;
-            }
-        }
-
-        //close
-        private void button9_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void panel13_MouseLeave(object sender, EventArgs e)
-        {
-            if (!isCollapsedFile)
-            {
-                panel19.Enabled = true;
-                panel19.BringToFront();
-
-                panelDropDown.Size = panelDropDown.MinimumSize;
-                isCollapsedFile = true;
-
-                pictureBox3.BringToFront();
-                pictureBox4.BringToFront();
-                pictureBox5.BringToFront();
-            }
-        }
-
-        private void panelDropDown_MouseLeave(object sender, EventArgs e)
-        {
-            if (!isCollapsedFile)
-            {
-                panel19.Enabled = true;
-                panel19.BringToFront();
-
-                panelDropDown.Size = panelDropDown.MinimumSize;
-                isCollapsedFile = true;
-
-                pictureBox3.BringToFront();
-                pictureBox4.BringToFront();
-                pictureBox5.BringToFront();
-            }
-        }
-
-        //Novi Stack
-        private void button12_Click(object sender, EventArgs e)
+        private void stackToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form6 f6 = new Form6();
             f6.ShowDialog();
@@ -511,26 +328,56 @@ namespace test
             }
             //try
             //{
-                if (File.Exists("da.txt"))
-                {
-                    File.Delete("da.txt");
-                    _stek.ucitajStekIzBaseFaila();
-                    tree = false;
-                    list = false;
-                    queue = false;
-                    stack = true;
-                    Refresh();
-                }
+            if (File.Exists("da.txt"))
+            {
+                File.Delete("da.txt");
+                _stek.ucitajStekIzBaseFaila();
+                tree = false;
+                list = false;
+                queue = false;
+                stack = true;
+                Refresh();
+            }
             //}
             //catch
             //{
             //}
         }
-        //Novi Graph
-        private void button20_Click(object sender, EventArgs e)
+
+        private void queueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form5 f5 = new Form5();
-            f5.ShowDialog();
+            //TO DO
+        }
+
+        private void binaryTreeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form2 f2 = new Form2();
+            f2.ShowDialog();
+            while (Application.OpenForms.Count > 1)
+            {
+            }
+            try
+            {
+                if (File.Exists("da.txt"))
+                {
+                    File.Delete("da.txt");
+                    _drvo.ucitajDrvoIzBaseFaila();
+                    tree = true;
+                    queue = false;
+                    stack = false;
+                    list = false;
+                    Refresh();
+                }
+            }
+            catch
+            {
+            }
+        }
+
+        private void graphToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form12 f12 = new Form12();
+            f12.ShowDialog();
             while (Application.OpenForms.Count > 1)
             {
             }
@@ -539,7 +386,7 @@ namespace test
             if (File.Exists("da.txt"))
             {
                 File.Delete("da.txt");
-                brojCvorovaGrafa=_graf.ucitajGrafIzBaseFaila();
+                brojCvorovaGrafa = _graf.ucitajGrafIzBaseFaila();
                 tree = false;
                 list = false;
                 queue = false;
@@ -552,6 +399,13 @@ namespace test
             //{
             //}
         }
+
+        private void sortingAlgorithamsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form4 f4 = new Form4();
+            f4.ShowDialog();
+        }
+
         #endregion
         #region Funkcije za drvo
         private void button13_Click(object sender, EventArgs e)
@@ -783,6 +637,14 @@ namespace test
             f11.ShowDialog();
         }
         #endregion
+
+        private void cToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form f1 = new ExportAsCode();
+            f1.ShowDialog();                   
+        }
+
+
 
     }
 }

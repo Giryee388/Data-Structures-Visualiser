@@ -16,87 +16,161 @@ namespace App
         {
             InitializeComponent();
         }
-        private int br;
-        public int Br
-        {
-            get { return br; }
-            set { br = value; }
-        }
+        int broj=0;
+
         System.Windows.Forms.GroupBox gb1 = new System.Windows.Forms.GroupBox();
         System.Windows.Forms.GroupBox gb2 = new System.Windows.Forms.GroupBox();
-        int broj;
-        List<System.Windows.Forms.RadioButton> btnLst = new List<System.Windows.Forms.RadioButton>();
+
+        List<System.Windows.Forms.RadioButton> btnLstLevi = new List<System.Windows.Forms.RadioButton>();
+        List<System.Windows.Forms.RadioButton> btnLstDesni = new List<System.Windows.Forms.RadioButton>();
+
+        Point levi = new Point();
+        Point desni = new Point();
+
+        List<Point> veze = new List<Point>();
+
         private void Form12_Load(object sender, EventArgs e)
         {
+            this.Size=new Size(320,500);
+            tabControl1.Size = this.Size;
 
-            System.Windows.Forms.RadioButton[] btnArr = new System.Windows.Forms.RadioButton[2 * br];      
-            this.Size=new Size(320,206+21*br);
+            this.Size = new Size(320, 250 + 21 * broj);
+            Controls.Add(gb1);
+            Controls.Add(gb2);
+            gb1.Location = new Point(10, 40);
+            gb1.Size = new Size(120, 20 + 21);
+            gb2.Location = new Point(ClientRectangle.Width - 130, 40);
+            gb2.Size = new Size(120, 20 + 21);
+            gb1.Text = "Polazna tacka";
+            gb2.Text = "Krajnja tacka";
+
+            tabPage1.Controls.Add(gb1);
+            tabPage1.Controls.Add(gb2);
+
+            button1.Location = new Point(ClientRectangle.Width / 2 - button1.Width / 2, ClientRectangle.Height - 20 - button2.Height - button1.Height- 22 );
+            button2.Location = new Point(ClientRectangle.Width / 2 - button2.Width / 2, ClientRectangle.Height - 10 - button1.Height -22 );
+            button3.Location = new Point(ClientRectangle.Width / 2 - button2.Width / 2, 12);
+            button1.Enabled = false;
+            button2.Enabled = false;
+        }
+        private void restartInput()
+        {
+            foreach (RadioButton i in btnLstLevi)
+            {
+                btnLstLevi.Remove(i);
+            }
+            foreach (RadioButton i in btnLstDesni)
+            {
+                btnLstDesni.Remove(i);
+            }
+
+            this.Size = new Size(320, 206 + 21);
             Controls.Add(gb1);
             Controls.Add(gb2);
             gb1.Location = new Point(10, 10);
-            gb1.Size = new Size(120, 20 + br * 21);
+            gb1.Size = new Size(120, 20 + 1 * 21);
             gb2.Location = new Point(ClientRectangle.Width - 130, 10);
-            gb2.Size = new Size(120, 20 + br * 21);
+            gb2.Size = new Size(120, 20 + 1 * 21);
             gb1.Text = "Polazna tacka";
             gb2.Text = "Krajnja tacka";
-            broj = 2 * br;
+
             button1.Location = new Point(ClientRectangle.Width / 2 - button1.Width / 2, ClientRectangle.Height - 20 - button2.Height - button1.Height);
             button2.Location = new Point(ClientRectangle.Width / 2 - button2.Width / 2, ClientRectangle.Height - 10 - button1.Height);
-            StreamReader f = new StreamReader("Grafovi/trenutniGraf/cvorovi.txt");
-            for (int i = 0; i < 2 * br; i += 2)
-            {
-                btnArr[i] = new RadioButton();
-                btnArr[i + 1] = new RadioButton();
-
-                Controls.Add(btnArr[i]);
-                Controls.Add(btnArr[i + 1]);
-
-                gb1.Controls.Add(btnArr[i]);
-                gb2.Controls.Add(btnArr[i + 1]);
-
-                btnArr[i].Name = Convert.ToString(i + 1);
-                btnArr[i + 1].Name = Convert.ToString(i + 2);
-
-                btnArr[i].Text = f.ReadLine();
-                btnArr[i + 1].Text = btnArr[i].Text;
-
-                btnArr[i].Location = new Point(5, 15 + (i - i / 2) * 21);
-                btnArr[i + 1].Location = new Point(gb2.Width - 10 - btnArr[i + 1].Width, 15 + (i - i / 2) * 21);
-
-                btnLst.Add(btnArr[i]);
-                btnLst.Add(btnArr[i + 1]);
-                
-            }
-            f.Dispose();
+            button1.Enabled = false;
+            button2.Enabled = false;
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.RadioButton[] btnArr = new System.Windows.Forms.RadioButton[broj];
-            btnLst.CopyTo(btnArr);
-            for (int i = 0; i < broj; i+=2)
+            RadioButton levi = new RadioButton();
+            RadioButton desni = new RadioButton();
+            foreach (RadioButton i in btnLstLevi)
             {
-                if (btnArr[i].Checked)
+                if (i.Checked == true)
                 {
-                    FileStream fs = File.Create("Grafovi/trenutniGraf/"+btnArr[i].Text+".txt");
-                    fs.Dispose();
-                    for (int j = 1; j <= broj - 1; j += 2)
-                    {
-                        if (btnArr[j].Checked)
-                        {
-                            StreamWriter f = new StreamWriter("Grafovi/trenutniGraf/" + btnArr[i].Text + ".txt");
-                            f.WriteLine(btnArr[j].Text);
-                            f.Dispose();
-                        }
-                    }
+                    levi = i;
+                }
+            }
+            foreach (RadioButton i in btnLstDesni)
+            {
+                if (i.Checked == true)
+                {
+                    desni = i;
                 }
             }
 
+            FileStream fs = File.Create("Grafovi/trenutniGraf/" + levi.Text + ".txt");
+            fs.Dispose();
+
+            StreamWriter f = new StreamWriter("Grafovi/trenutniGraf/" + levi.Text + ".txt");
+            f.WriteLine(desni.Text);
+            f.Dispose();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            RadioButton levi = new RadioButton();
+            RadioButton desni = new RadioButton();
+
+            Controls.Add(levi);
+            Controls.Add(desni);
+
+            tabPage1.Controls.Add(levi);
+            tabPage1.Controls.Add(desni);
+
+            gb1.Controls.Add(levi);
+            gb2.Controls.Add(desni);
+
+            levi.Name = Convert.ToString(broj);
+            desni.Name = Convert.ToString(broj);
+
+            levi.Text = Convert.ToString(broj);
+            desni.Text = Convert.ToString(broj);
+
+            levi.Location = new Point(gb1.Location.X + 5, 15 + broj * 21);
+            desni.Location = new Point(gb2.Width - 10 - desni.Width, 15 + broj * 21);
+
+            btnLstLevi.Add(levi);
+            btnLstDesni.Add(desni);
+
+            levi.CheckedChanged += new System.EventHandler(levi_CheckedChanged);
+            desni.CheckedChanged += new System.EventHandler(desni_CheckedChanged);
+
+            broj++;
+            gb2.Size = new Size(120, 20 + broj * 21);
+            gb1.Size = new Size(120, 20 + broj * 21);
+
+            this.Size = new Size(320, 250 + 21 * broj);
+            tabControl1.Size = this.Size;
+            button1.Location = new Point(ClientRectangle.Width / 2 - button1.Width / 2, ClientRectangle.Height - 20 - button2.Height - button1.Height - 22);
+            button2.Location = new Point(ClientRectangle.Width / 2 - button2.Width / 2, ClientRectangle.Height - 10 - button1.Height - 22);
+
+        }
+
+        protected void levi_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (RadioButton i in btnLstLevi)
+            {
+                if (i.Checked == true)
+                {
+                    levi = new Point(i.Location.X + i.Size.Width, i.Location.Y + i.Size.Height / 2);
+                }
+            }
+            foreach (RadioButton i in btnLstDesni)
+            {
+                if (i.Checked == true)
+                {
+                    desni = new Point(i.Location.X + i.Size.Width, i.Location.Y + i.Size.Height / 2);
+                }
+            }
+        }
+        protected void desni_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

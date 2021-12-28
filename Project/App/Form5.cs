@@ -118,7 +118,6 @@ namespace App
             }
             f.Dispose();
             Form12 f12 = new Form12();
-            f12.Br = br;
             f12.ShowDialog();
             this.Close();
         }
