@@ -75,7 +75,7 @@ namespace App
         private void button2_Click(object sender, EventArgs e)
         {
             Directory.CreateDirectory("Redovi");
-            string fileName = "Redovi/TrenutniRed";
+            string fileName = "Redovi/TrenutniRed.txt";
             FileStream fs = File.Create(fileName);
             StreamWriter f = new StreamWriter(fs);
             int n = Convert.ToInt32(listBox1.Items.Count.ToString());

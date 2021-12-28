@@ -183,7 +183,7 @@ namespace test
                 Point parent = new Point();
                 parent.X = D.X - Convert.ToInt32(xOffsetOdD);
                 parent.Y = D.Y;
-                _red.drawingRed(stek, parent, duzinaElementa, visinaElementa, razdaljina);
+                _red.drawingRed(red, parent, duzinaElementa, visinaElementa, razdaljina);
             }
         }
 
@@ -366,8 +366,8 @@ namespace test
                 _red.ucitajRedIzBaseFaila();
                 tree = false;
                 list = false;
-                queue = false;
-                stack = true;
+                queue = true;
+                stack = false;
                 Refresh();
             }
             //}
