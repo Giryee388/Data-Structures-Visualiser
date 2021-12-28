@@ -48,12 +48,7 @@
   <ItemGroup>
     <Compile Include="Drvo.cs" />
     <Compile Include="Element.cs" />
-    <Compile Include="ExportAsCode.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ExportAsCode.Designer.cs">
-      <DependentUpon>ExportAsCode.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Export.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,9 +137,6 @@
     <Compile Include="Red.cs" />
     <Compile Include="SortAlgorithm.cs" />
     <Compile Include="Stek.cs" />
-    <EmbeddedResource Include="ExportAsCode.resx">
-      <DependentUpon>ExportAsCode.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

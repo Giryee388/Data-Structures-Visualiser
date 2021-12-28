@@ -16,9 +16,6 @@ namespace test
 {
     public partial class Form1 : Form
     {
-        private bool isCollapsedFile = true;
-        private bool isCollapsedSimulate = true;
-        private bool isMaximized = true;
         public bool preOrderAnalizaKeepGoing = false;
 
         Drvo _drvo;
@@ -26,6 +23,7 @@ namespace test
         Stek _stek;
         Red _red;
         Graf _graf;
+        Export _export;
 
         public Form1()
         {
@@ -135,7 +133,7 @@ namespace test
 
                 
             }
-            if (stack) {
+            if (stack == true) {
                 double razdaljina = 10 * zoom;
                 double visinaElementa = 50 * zoom;
                 double duzinaElementa = 150 * zoom;
@@ -153,21 +151,6 @@ namespace test
 
                 g.DrawLine(olovka, parent.X - Convert.ToInt32(razdaljina+olovka.Width/2), parent.Y + Convert.ToInt32(razdaljina + visinaElementa), parent.X + Convert.ToInt32(duzinaElementa + razdaljina+olovka.Width/2), parent.Y + Convert.ToInt32(razdaljina + visinaElementa));
                 _stek.drawingStack(stek,parent,duzinaElementa, visinaElementa, razdaljina);
-                /*double razdaljina = 25 * zoom;
-                double visinaElementa = 50 * zoom;
-                double duzinaElementa = 150 * zoom;
-                double xOffsetOdD = 400 * zoom;
-
-                Graphics g = e.Graphics;
-                Font drawFont = new Font("Arial", Convert.ToInt32(zoom * 16));
-                SolidBrush cetka = new SolidBrush(Color.Black);                     za
-                SolidBrush stringCetka = new SolidBrush(Color.White);               red
-                Pen olovka = new Pen(Color.DarkGray, Convert.ToInt32(zoom * 6));
-
-                Point parent = new Point();
-                parent.X = D.X - Convert.ToInt32(xOffsetOdD);
-                parent.Y = D.Y;
-                _red.drawingRed(stek, parent, duzinaElementa, visinaElementa, razdaljina);*/
                 }
             if (graph)
             {
@@ -183,6 +166,24 @@ namespace test
 
                 _graf.drawingGraf(graf, stranica, polOpisanog, precnikCvora, D, olovka, drawFont, cetka, stringCetka);
 
+            }
+            if (queue == true)
+            {
+                double razdaljina = 25 * zoom;
+                double visinaElementa = 50 * zoom;
+                double duzinaElementa = 150 * zoom;
+                double xOffsetOdD = 400 * zoom;
+
+                Graphics g = e.Graphics;
+                Font drawFont = new Font("Arial", Convert.ToInt32(zoom * 16));
+                SolidBrush cetka = new SolidBrush(Color.Black);
+                SolidBrush stringCetka = new SolidBrush(Color.White);
+                Pen olovka = new Pen(Color.DarkGray, Convert.ToInt32(zoom * 6));
+
+                Point parent = new Point();
+                parent.X = D.X - Convert.ToInt32(xOffsetOdD);
+                parent.Y = D.Y;
+                _red.drawingRed(stek, parent, duzinaElementa, visinaElementa, razdaljina);
             }
         }
 
@@ -242,6 +243,7 @@ namespace test
             _stek = new Stek(CreateGraphics(), this);
             _red = new Red(CreateGraphics(), this);
             _graf = new Graf(CreateGraphics(), this);
+            _export = new Export();
 
             D.X = ClientRectangle.Width / 2 - 125;
             D.Y = ClientRectangle.Height / 2;
@@ -294,6 +296,11 @@ namespace test
 
         #endregion
         #region Dugmici Gornji Menubar
+        private void cToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _export.ExportAsCodeDrvo();
+        }
+
         private void ListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form3 f3 = new Form3();
@@ -346,7 +353,27 @@ namespace test
 
         private void queueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //TO DO
+            Form14 f14 = new Form14();
+            f14.ShowDialog();
+            while (Application.OpenForms.Count > 1)
+            {
+            }
+            //try
+            //{
+            if (File.Exists("da.txt"))
+            {
+                File.Delete("da.txt");
+                _red.ucitajRedIzBaseFaila();
+                tree = false;
+                list = false;
+                queue = false;
+                stack = true;
+                Refresh();
+            }
+            //}
+            //catch
+            //{
+            //}
         }
 
         private void binaryTreeToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -405,6 +432,8 @@ namespace test
             Form4 f4 = new Form4();
             f4.ShowDialog();
         }
+
+        
 
         #endregion
         #region Funkcije za drvo
@@ -638,11 +667,7 @@ namespace test
         }
         #endregion
 
-        private void cToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form f1 = new ExportAsCode();
-            f1.ShowDialog();                   
-        }
+        
 
 
 
